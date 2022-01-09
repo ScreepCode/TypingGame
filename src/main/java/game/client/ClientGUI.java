@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class ClientGUI extends JFrame implements KeyListener{
-	JTextField textFieldPassword;
+	JPasswordField textFieldPassword;
 	JTextField textFieldAnschlaegePM;
 	JTextField textFieldFehler;
 	JTextField textFieldRechnung;
@@ -78,12 +78,12 @@ public class ClientGUI extends JFrame implements KeyListener{
 		lblHighScore.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		lblHighScore.setBounds(520, 110, 204, 34);
 		panelLogin.add(lblHighScore);
-		
-		textFieldPassword = new JTextField();
-		textFieldPassword.setToolTipText("");
+
+		textFieldPassword = new JPasswordField();
 		textFieldPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textFieldPassword.setColumns(10);
 		textFieldPassword.setBounds(122, 234, 181, 58);
+		textFieldPassword.setEchoChar('*');
 		panelLogin.add(textFieldPassword);
 		
 		JTextField textFieldUsername = new JTextField();
