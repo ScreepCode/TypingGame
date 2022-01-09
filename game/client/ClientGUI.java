@@ -13,31 +13,45 @@ public class ClientGUI extends JFrame{
 	private JTextField textFieldRechnung;
 	private JTextField textFieldErgebnis;
 	private JTextField textFieldAnschlaege;
+
+	JPanel panelLogin;
+	JPanel panelLobby;
+	JPanel panelGame;
+	JPanel panelErgebnis;
+
+	ClientHead clientHead;
 	
-	public ClientGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(null);
+	public ClientGUI(ClientHead clientHead) {
+		super("Typing Game Multiplayer");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		this.clientHead = clientHead;
+
 		
-		JPanel panelLogin = new JPanel();
+		//##############################################
+		//LOGINPAGE
+		//##############################################
+
+		panelLogin = new JPanel();
 		panelLogin.setBounds(10, 11, 734, 513);
-		getContentPane().add(panelLogin);
 		panelLogin.setLayout(null);
+		panelLogin.setVisible(true);
 		
 		JLabel lblHeading = new JLabel("Typing Game Multiplayer");
 		lblHeading.setBounds(76, 0, 582, 64);
 		lblHeading.setFont(new Font("Tahoma", Font.PLAIN, 53));
 		panelLogin.add(lblHeading);
 		
-		JList listHighscore = new JList();
-		listHighscore.setEnabled(false);
-		listHighscore.setBounds(528, 466, 181, -304);
-		panelLogin.add(listHighscore);
+		// JList listHighscore = new JList();
+		// listHighscore.setEnabled(false);
+		// listHighscore.setBounds(528, 466, 181, -304);
+		// panelLogin.add(listHighscore);
 		
-		JLabel lblHighScore = new JLabel("Highscores");
-		lblHighScore.setLabelFor(listHighscore);
-		lblHighScore.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblHighScore.setBounds(520, 110, 204, 34);
-		panelLogin.add(lblHighScore);
+		// JLabel lblHighScore = new JLabel("Highscores");
+		// lblHighScore.setLabelFor(listHighscore);
+		// lblHighScore.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		// lblHighScore.setBounds(520, 110, 204, 34);
+		// panelLogin.add(lblHighScore);
 		
 		textFieldPassword = new JTextField();
 		textFieldPassword.setToolTipText("");
@@ -66,11 +80,25 @@ public class ClientGUI extends JFrame{
 		panelLogin.add(lblPassword);
 		
 		JButton btnAccErstellen = new JButton("Account \r\nerstellen");
+		btnAccErstellen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String username = textFieldUsername.getText();
+				String password = textFieldPassword.getText();
+				clientHead.login.accCreation(username, password);
+			}
+		});
 		btnAccErstellen.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnAccErstellen.setBounds(328, 151, 161, 56);
 		panelLogin.add(btnAccErstellen);
 		
 		JButton btnAnmelden = new JButton("Anmelden");
+		btnAnmelden.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String username = textFieldUsername.getText();
+				String password = textFieldPassword.getText();
+				clientHead.login.accLogin(username, password);
+			}
+		});
 		btnAnmelden.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnAnmelden.setBounds(328, 234, 161, 56);
 		panelLogin.add(btnAnmelden);
@@ -78,15 +106,20 @@ public class ClientGUI extends JFrame{
 		JButton btnAlsGastAnmelden = new JButton("Als Gast anmelden");
 		btnAlsGastAnmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clientHead.login.accLoginAsGuest();
 			}
 		});
 		btnAlsGastAnmelden.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnAlsGastAnmelden.setBounds(76, 373, 271, 56);
 		panelLogin.add(btnAlsGastAnmelden);
+
+		//##############################################
+		//LOBBY
+		//##############################################
 		
-		JPanel panelLobby = new JPanel();
+		panelLobby = new JPanel();
 		panelLobby.setBounds(10, 11, 734, 513);
-		getContentPane().add(panelLobby);
+		// getContentPane().add(panelLobby);
 		panelLobby.setLayout(null);
 		
 		JLabel lblLobby = new JLabel("LOBBY");
@@ -94,13 +127,13 @@ public class ClientGUI extends JFrame{
 		lblLobby.setFont(new Font("Tahoma", Font.PLAIN, 33));
 		panelLobby.add(lblLobby);
 		
-		JList listL = new JList();
-		listL.setBounds(31, 443, 282, -340);
-		panelLobby.add(listL);
+		// JList listL = new JList();
+		// listL.setBounds(31, 443, 282, -340);
+		// panelLobby.add(listL);
 		
-		JList listR = new JList();
-		listR.setBounds(411, 439, 282, -340);
-		panelLobby.add(listR);
+		// JList listR = new JList();
+		// listR.setBounds(411, 439, 282, -340);
+		// panelLobby.add(listR);
 		
 		JButton btnBereit = new JButton("Bereit");
 		btnBereit.addActionListener(new ActionListener() {
@@ -115,9 +148,12 @@ public class ClientGUI extends JFrame{
 		lblNewLabel.setBounds(583, 43, 120, 40);
 		panelLobby.add(lblNewLabel);
 		
-		JPanel panelGame = new JPanel();
+		//##############################################
+		//Game
+		//##############################################
+
+		panelGame = new JPanel();
 		panelGame.setBounds(10, 11, 734, 513);
-		getContentPane().add(panelGame);
 		panelGame.setLayout(null);
 		
 		JLabel lblGame = new JLabel("Schreib so gut und schnell zu kannst");
@@ -158,9 +194,12 @@ public class ClientGUI extends JFrame{
 		txtpnText.setBounds(46, 139, 677, 349);
 		panelGame.add(txtpnText);
 		
-		JPanel panelErgebnis = new JPanel();
+		//##############################################
+		//Ergebnis
+		//##############################################
+
+		panelErgebnis = new JPanel();
 		panelErgebnis.setBounds(10, 11, 734, 513);
-		getContentPane().add(panelErgebnis);
 		panelErgebnis.setLayout(null);
 		
 		JLabel lblErgebnisHeading = new JLabel("ERGEBNIS");
@@ -191,9 +230,9 @@ public class ClientGUI extends JFrame{
 		btnRekordUpload.setBounds(47, 439, 194, 40);
 		panelErgebnis.add(btnRekordUpload);
 		
-		JList list = new JList();
-		list.setBounds(420, 439, 244, -278);
-		panelErgebnis.add(list);
+		// JList list = new JList();
+		// list.setBounds(420, 439, 244, -278);
+		// panelErgebnis.add(list);
 		
 		JLabel lblAnschlaegePM = new JLabel("Anschl\u00E4ge p/m");
 		lblAnschlaegePM.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -274,6 +313,44 @@ public class ClientGUI extends JFrame{
 		lblAnschlaegeE.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblAnschlaegeE.setBounds(179, 155, 146, 40);
 		panelErgebnis.add(lblAnschlaegeE);
-	
+
+
+		getContentPane().add(panelLogin);
+		getContentPane().add(panelLobby);
+		getContentPane().add(panelGame);
+		getContentPane().add(panelErgebnis);
+
+		panelLogin.setVisible(false);
+		panelLobby.setVisible(false);
+		panelGame.setVisible(false);
+		panelErgebnis.setVisible(false);
 	}
+
+	public void setPanelLayout(String panelType){
+		if(panelType.equals("login")){
+			panelLogin.setVisible(true);
+			panelLobby.setVisible(false);
+			panelGame.setVisible(false);
+			panelErgebnis.setVisible(false);
+		}
+		else if(panelType.equals("lobby")){
+			panelLogin.setVisible(false);
+			panelLobby.setVisible(true);
+			panelGame.setVisible(false);
+			panelErgebnis.setVisible(false);
+		}
+		else if(panelType.equals("game")){
+			panelLogin.setVisible(false);
+			panelLobby.setVisible(false);
+			panelGame.setVisible(true);
+			panelErgebnis.setVisible(false);
+		}
+		else if(panelType.equals("ergebnis")){
+			panelLogin.setVisible(false);
+			panelLobby.setVisible(false);
+			panelGame.setVisible(false);
+			panelErgebnis.setVisible(true);
+		}
+	}
+
 }
