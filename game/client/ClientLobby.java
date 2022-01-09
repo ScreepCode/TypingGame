@@ -14,10 +14,6 @@ public class ClientLobby {
     
     }
 
-    public void startGame(){
-        clientHead.gui.setPanelLayout("game");
-    }
-
     public void refreshCounter(String data){
         clientHead.gui.lblReadyCounter.setText("Bereit: " + data);
     }

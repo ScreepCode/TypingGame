@@ -9,6 +9,7 @@ public class ClientHead extends Client{
 	ClientGUI gui;
 	ClientLogin login;
 	ClientLobby lobby;
+	ClientGame game;
 
 	public ClientHead(String pServerIP, int pServerPort) {
 		super(pServerIP, pServerPort);
@@ -17,10 +18,13 @@ public class ClientHead extends Client{
 		gui = new ClientGUI(this);
 		login = new ClientLogin(this);
 		lobby = new ClientLobby(this);
+		game = new ClientGame(this);
 
-		gui.setBounds(10, 11, 734, 513);
+		gui.setBounds(10, 11, 800, 600);
 		gui.setVisible(true);
 		gui.setPanelLayout("login");
+		gui.setFocusable(true);
+		gui.addKeyListener(gui);
 	}
 
 	@Override
@@ -48,7 +52,7 @@ public class ClientHead extends Client{
 
 			case PROTOKOLL.SC_LOBBYSTATUS: {
 				if(daten.equals("START")) {
-					lobby.startGame();
+					game.startGame();
 				}
 				else{
 					lobby.refreshCounter(daten);

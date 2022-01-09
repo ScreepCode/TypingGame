@@ -1,12 +1,12 @@
 package game.client;
 
 import javax.swing.*;
+import javax.swing.text.*;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.awt.Color;
 
-public class ClientGUI extends JFrame{
+public class ClientGUI extends JFrame implements KeyListener{
 	private JTextField textFieldPassword;
 	private JTextField textFieldAnschlaegePM;
 	private JTextField textFieldFehler;
@@ -20,6 +20,11 @@ public class ClientGUI extends JFrame{
 	JPanel panelErgebnis;
 
 	JLabel lblReadyCounter;
+	JLabel lblZeit;
+	JLabel lblAnschlaege;
+
+	StyledDocument doc = new DefaultStyledDocument();
+	JTextPane txtpnText;
 
 	ClientHead clientHead;
 	
@@ -28,7 +33,6 @@ public class ClientGUI extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		this.clientHead = clientHead;
-
 		
 		//##############################################
 		//LOGINPAGE
@@ -158,6 +162,7 @@ public class ClientGUI extends JFrame{
 		panelGame = new JPanel();
 		panelGame.setBounds(10, 11, 734, 513);
 		panelGame.setLayout(null);
+		panelGame.addKeyListener(this);
 		
 		JLabel lblGame = new JLabel("Schreib so gut und schnell zu kannst");
 		lblGame.setFont(new Font("Tahoma", Font.PLAIN, 36));
@@ -169,7 +174,7 @@ public class ClientGUI extends JFrame{
 		lblZeitLabel1.setBounds(341, 92, 211, 36);
 		panelGame.add(lblZeitLabel1);
 		
-		JLabel lblZeit = new JLabel("100");
+		lblZeit = new JLabel("100");
 		lblZeit.setForeground(Color.RED);
 		lblZeit.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		lblZeit.setBounds(562, 92, 50, 36);
@@ -185,16 +190,16 @@ public class ClientGUI extends JFrame{
 		lblAnschlaegeLabel.setBounds(46, 92, 186, 36);
 		panelGame.add(lblAnschlaegeLabel);
 		
-		JLabel lblAnschlaege = new JLabel("32");
+		lblAnschlaege = new JLabel("32");
 		lblAnschlaege.setForeground(Color.RED);
 		lblAnschlaege.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		lblAnschlaege.setBounds(230, 92, 50, 36);
 		panelGame.add(lblAnschlaege);
 		
-		JTextPane txtpnText = new JTextPane();
+		txtpnText = new JTextPane(doc);
 		txtpnText.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtpnText.setText("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   ");
 		txtpnText.setBounds(46, 139, 677, 349);
+		txtpnText.setEnabled(false);
 		panelGame.add(txtpnText);
 		
 		//##############################################
@@ -354,6 +359,23 @@ public class ClientGUI extends JFrame{
 			panelGame.setVisible(false);
 			panelErgebnis.setVisible(true);
 		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		clientHead.game.action(e.getKeyChar());
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
