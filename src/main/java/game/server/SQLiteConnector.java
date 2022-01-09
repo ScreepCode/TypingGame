@@ -33,7 +33,7 @@ public class SQLiteConnector{
     }
 
     public String[][] getHighscores(){
-        con.executeStatement("SELECT Username, Highscore FROM User ORDER BY Highscore LIMIT 5");
+        con.executeStatement("SELECT Username, Highscore FROM User ORDER BY Highscore DESC LIMIT 5");
         return con.getCurrentQueryResult().getData();
     }
 

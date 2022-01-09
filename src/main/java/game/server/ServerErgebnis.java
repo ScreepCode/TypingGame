@@ -53,7 +53,7 @@ public class ServerErgebnis {
 
         String message = PROTOKOLL.SC_ROUNDRESULT + PROTOKOLL.SEPARATOR;
         for(playedPlayer.toFirst(); playedPlayer.hasAccess(); playedPlayer.next()){
-            message += "§" + playedPlayer.getContent().getNickName() + ":" + (int)playedPlayer.getContent().getScore();
+            message += playedPlayer.getContent().getNickName() + ":" + (int)playedPlayer.getContent().getScore() + "§";
         }
         serverHead.sendToAll(message);
     }
