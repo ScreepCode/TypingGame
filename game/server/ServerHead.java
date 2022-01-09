@@ -10,12 +10,14 @@ public class ServerHead extends Server{
 
 	SQLiteConnector connector = new SQLiteConnector("C:/Users/nicki/Desktop/TypingGame/database.db");
 	ServerLogin login;
+	ServerLobby lobby;
 	
 	public ServerHead(int pPort) {
 		super(pPort);
 
 		System.out.println("SERVER: \n\n");
 		login = new ServerLogin(this);
+		lobby = new ServerLobby(this);
 	}
 	
 
@@ -29,6 +31,7 @@ public class ServerHead extends Server{
 
 	@Override
 	public void processMessage(String pClientIP, int pClientPort, String pMessage) {
+		System.out.println(pMessage);
 		int posSep1 = pMessage.indexOf(PROTOKOLL.SEPARATOR);
 		String prefix = pMessage.substring(0, posSep1);
 
@@ -39,6 +42,15 @@ public class ServerHead extends Server{
 				
 			case PROTOKOLL.CS_ACC_CREATION: {
 				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
+				}break;			
+			
+			
+			case PROTOKOLL.CS_ENTERLOBBY:{
+				lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
+				}break;
+
+			case PROTOKOLL.CS_SETREADY: {
+				lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 				}break;
 		}
 	}

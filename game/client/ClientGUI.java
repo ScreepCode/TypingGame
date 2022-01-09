@@ -19,6 +19,8 @@ public class ClientGUI extends JFrame{
 	JPanel panelGame;
 	JPanel panelErgebnis;
 
+	JLabel lblReadyCounter;
+
 	ClientHead clientHead;
 	
 	public ClientGUI(ClientHead clientHead) {
@@ -138,15 +140,16 @@ public class ClientGUI extends JFrame{
 		JButton btnBereit = new JButton("Bereit");
 		btnBereit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clientHead.lobby.setReady();
 			}
 		});
 		btnBereit.setBounds(30, 452, 673, 50);
 		panelLobby.add(btnBereit);
 		
-		JLabel lblNewLabel = new JLabel("Bereit: 0/0");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(583, 43, 120, 40);
-		panelLobby.add(lblNewLabel);
+		lblReadyCounter = new JLabel("Bereit: 0/0");
+		lblReadyCounter.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblReadyCounter.setBounds(583, 43, 120, 40);
+		panelLobby.add(lblReadyCounter);
 		
 		//##############################################
 		//Game

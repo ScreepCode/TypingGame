@@ -8,6 +8,7 @@ public class ClientHead extends Client{
 
 	ClientGUI gui;
 	ClientLogin login;
+	ClientLobby lobby;
 
 	public ClientHead(String pServerIP, int pServerPort) {
 		super(pServerIP, pServerPort);
@@ -15,6 +16,7 @@ public class ClientHead extends Client{
 		System.out.println("Client: \n\n");
 		gui = new ClientGUI(this);
 		login = new ClientLogin(this);
+		lobby = new ClientLobby(this);
 
 		gui.setBounds(10, 11, 734, 513);
 		gui.setVisible(true);
@@ -41,6 +43,15 @@ public class ClientHead extends Client{
 				
 				else if(daten.equals("Failed")) {
 					System.out.println("Fehler in der Anmeldung/Registrierung");
+				}
+				}break;
+
+			case PROTOKOLL.SC_LOBBYSTATUS: {
+				if(daten.equals("START")) {
+					lobby.startGame();
+				}
+				else{
+					lobby.refreshCounter(daten);
 				}
 				}break;
 				
