@@ -29,10 +29,16 @@ public class ServerLogin {
                 String passwordHash = daten.substring(posSep2+1);
 				
 				try {
-                    serverHead.connector.createAccount(username, passwordHash);
-                    tmpSpieler.setNickName(username);
-                    String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
-                    serverHead.send(pClientIP, pClientPort, antwort);
+                    Boolean result = serverHead.connector.createAccount(username, passwordHash);
+                    if(result){
+                        tmpSpieler.setNickName(username);
+                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
+                        serverHead.send(pClientIP, pClientPort, antwort);
+                    }
+                    else{
+                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed";
+                        serverHead.send(pClientIP, pClientPort, antwort);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                     String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed";

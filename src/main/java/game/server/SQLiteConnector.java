@@ -12,9 +12,14 @@ public class SQLiteConnector{
         con = new DatabaseConnector("", 0, dbName, "", "");
     }
 
-    public void createAccount(String username, String passwordHash){
-        String command = "INSERT INTO USER (Username, Password) VALUES ('"+ username +"', '" + passwordHash + "')";
-        con.executeStatement(command);
+    public Boolean createAccount(String username, String passwordHash){
+        con.executeStatement("SELECT * FROM USER WHERE Username = '" + username +"'");
+        if(con.getCurrentQueryResult() == null){
+            String command = "INSERT INTO USER (Username, Password) VALUES ('"+ username +"', '" + passwordHash + "')";
+            con.executeStatement(command);
+            return true;
+        }
+        return false;
     }
 
     public boolean passwordCheck(String username, String passwordHash){
