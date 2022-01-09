@@ -36,12 +36,12 @@ public class ServerLogin {
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                     else{
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed";
+                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed" + ": Nutzername existiert bereits";
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed";
+                    String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed" + ": Unbekannter Fehler aufgetreten";
                     serverHead.send(pClientIP, pClientPort, antwort);
                 }
 				
@@ -52,6 +52,8 @@ public class ServerLogin {
 				if(dataArr.length == 1) {
 					if(dataArr[0].equals("Guest")) {
 						tmpSpieler.setNickName("Guest" + new Random().nextInt(100));
+                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
+                        serverHead.send(pClientIP, pClientPort, antwort);
 					}
 				}
 				else {
