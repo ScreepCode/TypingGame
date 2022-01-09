@@ -20,10 +20,7 @@ public class SQLiteConnector{
     public boolean passwordCheck(String username, String passwordHash){
         con.executeStatement("SELECT Password FROM USER WHERE Username = '" + username +"'");
         QueryResult result = con.getCurrentQueryResult();
-        if(passwordHash.equals(result.getData()[0][0])){
-            return true;
-        }
-        return false;
+        return passwordHash.equals(result.getData()[0][0]);
     }
 
 }

@@ -1,8 +1,8 @@
 package game.server;
 
-import java.util.Random;
-
 import game.PROTOKOLL;
+
+import java.util.Random;
 
 public class ServerLogin {
 
@@ -44,7 +44,7 @@ public class ServerLogin {
 			case PROTOKOLL.CS_ACC_LOGIN: {
 				String [] dataArr = daten.split(":");
 				if(dataArr.length == 1) {
-					if(dataArr[0] == "Guest") {
+					if(dataArr[0].equals("Guest")) {
 						tmpSpieler.setNickName("Guest" + new Random().nextInt(100));
 					}
 				}

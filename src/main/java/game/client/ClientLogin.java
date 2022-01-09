@@ -1,7 +1,9 @@
 package game.client;
 
-import java.security.MessageDigest;
 import game.PROTOKOLL;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 
 public class ClientLogin {
 
@@ -17,7 +19,7 @@ public class ClientLogin {
         try{
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(password.getBytes());
-            String passwordHash = new String(messageDigest.digest());
+            String passwordHash = new String(messageDigest.digest(), StandardCharsets.UTF_8);
 		
             String message = PROTOKOLL.CS_ACC_LOGIN + PROTOKOLL.SEPARATOR + name + ":" + passwordHash;
             clientHead.send(message);
@@ -31,7 +33,7 @@ public class ClientLogin {
 		try{
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(password.getBytes());
-            String passwordHash = new String(messageDigest.digest());
+            String passwordHash = new String(messageDigest.digest(), StandardCharsets.UTF_8);
             
             String message = PROTOKOLL.CS_ACC_CREATION + PROTOKOLL.SEPARATOR + name + ":" + passwordHash;
             clientHead.send(message);
