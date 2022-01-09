@@ -6,11 +6,12 @@ import Netzklassen.*;
 
 public class ServerHead extends Server{
 
-	private List<Spieler> spieler = new List<Spieler>();
+	List<Spieler> spieler = new List<Spieler>();
 
 	SQLiteConnector connector = new SQLiteConnector("C:/Users/nicki/Desktop/TypingGame/database.db");
 	ServerLogin login;
 	ServerLobby lobby;
+	ServerErgebnis ergebnis;
 	
 	public ServerHead(int pPort) {
 		super(pPort);
@@ -18,6 +19,7 @@ public class ServerHead extends Server{
 		System.out.println("SERVER: \n\n");
 		login = new ServerLogin(this);
 		lobby = new ServerLobby(this);
+		ergebnis = new ServerErgebnis(this);
 	}
 	
 
@@ -36,6 +38,10 @@ public class ServerHead extends Server{
 		String prefix = pMessage.substring(0, posSep1);
 
 		switch (prefix) {
+			case PROTOKOLL.CS_REQUESTHIGHSCORELIST: {
+				this.send(pClientIP, pClientPort, login.getHighscores());
+			}break;
+
 			case PROTOKOLL.CS_ACC_LOGIN: {
 				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 				}break;
@@ -51,6 +57,14 @@ public class ServerHead extends Server{
 
 			case PROTOKOLL.CS_SETREADY: {
 				lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
+				}break;
+
+			case PROTOKOLL.CS_ENDEDGAME: {
+				ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
+				}break;
+
+			case PROTOKOLL.CS_SAVEHIGHSCORE: {
+				ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 				}break;
 		}
 	}

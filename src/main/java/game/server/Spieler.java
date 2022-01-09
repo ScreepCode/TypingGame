@@ -5,6 +5,7 @@ public class Spieler {
 	private int port; 
 	private String nickName; 
 	private double highscore;
+	private double score;
 	private Boolean readyStatus;
 
 	public Spieler(String ipAdresse, int port) {
@@ -12,6 +13,7 @@ public class Spieler {
 		this.port = port;
 		this.nickName = "";
 		this.highscore = 0.0;
+		this.score = 0.0;
 		this.readyStatus = false;
 	}
 
@@ -38,6 +40,14 @@ public class Spieler {
 
 	public void setHighscore(double highscore) {
 		this.highscore = highscore;
+	}
+
+	public double getScore() {
+		return score;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
 	}
 
 	public Boolean getReadyStatus() {

@@ -1,18 +1,22 @@
 package game.client;
 
 import javax.swing.*;
-import javax.swing.text.*;
-import java.awt.Font;
-import java.awt.event.*;
-import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.StyledDocument;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class ClientGUI extends JFrame implements KeyListener{
-	private JTextField textFieldPassword;
-	private JTextField textFieldAnschlaegePM;
-	private JTextField textFieldFehler;
-	private JTextField textFieldRechnung;
-	private JTextField textFieldErgebnis;
-	private JTextField textFieldAnschlaege;
+	JTextField textFieldPassword;
+	JTextField textFieldAnschlaegePM;
+	JTextField textFieldFehler;
+	JTextField textFieldRechnung;
+	JTextField textFieldErgebnis;
+	JTextField textFieldAnschlaege;
 
 	JPanel panelLogin;
 	JPanel panelLobby;
@@ -26,7 +30,17 @@ public class ClientGUI extends JFrame implements KeyListener{
 	StyledDocument doc = new DefaultStyledDocument();
 	JTextPane txtpnText;
 
+	JButton btnRekordUpload;
+
+
+	DefaultTableModel dTMHHSc = new DefaultTableModel();
+	JTable highscoreTable;
+
+	DefaultTableModel dTMSc = new DefaultTableModel();
+	JTable scoreTable;
+
 	ClientHead clientHead;
+
 	
 	public ClientGUI(ClientHead clientHead) {
 		super("Typing Game Multiplayer");
@@ -47,17 +61,18 @@ public class ClientGUI extends JFrame implements KeyListener{
 		lblHeading.setBounds(76, 0, 582, 64);
 		lblHeading.setFont(new Font("Tahoma", Font.PLAIN, 53));
 		panelLogin.add(lblHeading);
+
+		highscoreTable = new JTable(dTMHHSc);
+		JScrollPane scrollTable = new JScrollPane(highscoreTable);
+		scrollTable.setBounds(520, 150, 181, 320);
+
+		panelLogin.add(scrollTable);
 		
-		// JList listHighscore = new JList();
-		// listHighscore.setEnabled(false);
-		// listHighscore.setBounds(528, 466, 181, -304);
-		// panelLogin.add(listHighscore);
-		
-		// JLabel lblHighScore = new JLabel("Highscores");
-		// lblHighScore.setLabelFor(listHighscore);
-		// lblHighScore.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		// lblHighScore.setBounds(520, 110, 204, 34);
-		// panelLogin.add(lblHighScore);
+		JLabel lblHighScore = new JLabel("Highscores");
+		lblHighScore.setLabelFor(highscoreTable);
+		lblHighScore.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		lblHighScore.setBounds(520, 110, 204, 34);
+		panelLogin.add(lblHighScore);
 		
 		textFieldPassword = new JTextField();
 		textFieldPassword.setToolTipText("");
@@ -169,7 +184,7 @@ public class ClientGUI extends JFrame implements KeyListener{
 		lblGame.setBounds(83, 0, 587, 67);
 		panelGame.add(lblGame);
 		
-		JLabel lblZeitLabel1 = new JLabel("Verbliebende Zeit:");
+		JLabel lblZeitLabel1 = new JLabel("Verbleibende Zeit:");
 		lblZeitLabel1.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		lblZeitLabel1.setBounds(341, 92, 211, 36);
 		panelGame.add(lblZeitLabel1);
@@ -232,15 +247,23 @@ public class ClientGUI extends JFrame implements KeyListener{
 		lblGAuswertung.setBounds(420, 104, 270, 40);
 		panelErgebnis.add(lblGAuswertung);
 		
-		JButton btnRekordUpload = new JButton("Rekord hochladen");
+		btnRekordUpload = new JButton("Rekord hochladen");
 		btnRekordUpload.setEnabled(false);
+		btnRekordUpload.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clientHead.ergebnis.uploadRecord();
+			}
+		});
 		btnRekordUpload.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnRekordUpload.setBounds(47, 439, 194, 40);
 		panelErgebnis.add(btnRekordUpload);
-		
-		// JList list = new JList();
-		// list.setBounds(420, 439, 244, -278);
-		// panelErgebnis.add(list);
+
+
+		scoreTable = new JTable(dTMSc);
+		JScrollPane scrollScoreTable = new JScrollPane(scoreTable);
+		scrollScoreTable.setBounds(420, 150, 244, 278);
+		panelErgebnis.add(scrollScoreTable);
+
 		
 		JLabel lblAnschlaegePM = new JLabel("Anschl\u00E4ge p/m");
 		lblAnschlaegePM.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -377,5 +400,4 @@ public class ClientGUI extends JFrame implements KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
-
 }

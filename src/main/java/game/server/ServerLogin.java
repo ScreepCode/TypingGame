@@ -54,6 +54,7 @@ public class ServerLogin {
                     String passwordHash = daten.substring(posSep2+1);
 					
 					if(serverHead.connector.passwordCheck(username, passwordHash)){
+                        tmpSpieler.setNickName(username);
                         String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
@@ -66,5 +67,18 @@ public class ServerLogin {
 				}break;
 		}
     }
+
+    public String getHighscores(){
+        String message = PROTOKOLL.SC_HIGHSCORELIST + PROTOKOLL.SEPARATOR;
+        String[][] highscorelist = serverHead.connector.getHighscores();
+
+        for(String [] row : highscorelist){
+            message += "$" + row[0] + ":" + row[1];
+        }
+
+        return message;
+    }
+
+
     
 }

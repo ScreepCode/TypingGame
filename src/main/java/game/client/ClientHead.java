@@ -10,6 +10,7 @@ public class ClientHead extends Client{
 	ClientLogin login;
 	ClientLobby lobby;
 	ClientGame game;
+	ClientErgebnis ergebnis;
 
 	public ClientHead(String pServerIP, int pServerPort) {
 		super(pServerIP, pServerPort);
@@ -19,12 +20,15 @@ public class ClientHead extends Client{
 		login = new ClientLogin(this);
 		lobby = new ClientLobby(this);
 		game = new ClientGame(this);
+		ergebnis = new ClientErgebnis(this);
 
 		gui.setBounds(10, 11, 800, 600);
 		gui.setVisible(true);
 		gui.setPanelLayout("login");
 		gui.setFocusable(true);
 		gui.addKeyListener(gui);
+
+		send(PROTOKOLL.CS_REQUESTHIGHSCORELIST + PROTOKOLL.SEPARATOR + " ");
 	}
 
 	@Override
@@ -37,7 +41,10 @@ public class ClientHead extends Client{
 		switch (prefix) {
 		
 //			###############LOGINPAGE#########################
-			
+			case PROTOKOLL.SC_HIGHSCORELIST: {
+				login.updateHighscoreList(daten);
+			}break;
+
 			case PROTOKOLL.SC_LOGINSTATUS: {
 				// String [] data = daten[1].split(":");
 				if(daten.equals("Success")) {
@@ -58,6 +65,14 @@ public class ClientHead extends Client{
 					lobby.refreshCounter(daten);
 				}
 				}break;
+
+			case PROTOKOLL.SC_OWNRESULT: {
+				ergebnis.show(daten);
+			}break;
+
+			case PROTOKOLL.SC_ROUNDRESULT: {
+				ergebnis.updateScoreList(daten);
+			}break;
 				
 				
 //			###############LOBBYPAGE#########################

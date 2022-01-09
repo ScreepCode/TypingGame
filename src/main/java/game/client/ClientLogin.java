@@ -47,4 +47,21 @@ public class ClientLogin {
 		String message = PROTOKOLL.CS_ACC_LOGIN + PROTOKOLL.SEPARATOR + "Guest";
 		clientHead.send(message);
 	}
+
+    public void updateHighscoreList(String data){
+        clientHead.gui.dTMHHSc.setRowCount(0);
+        clientHead.gui.dTMHHSc.setColumnCount(0);
+
+        clientHead.gui.dTMHHSc.addColumn("Username");
+        clientHead.gui.dTMHHSc.addColumn("Highscore");
+
+        String [] playerArr = data.split("$");
+        for(String player : playerArr){
+            String [] playerData = player.split(":");
+            String username = playerData[0];
+            String score = playerData[1];
+
+            clientHead.gui.dTMHHSc.addRow(playerData);
+        }
+    }
 }

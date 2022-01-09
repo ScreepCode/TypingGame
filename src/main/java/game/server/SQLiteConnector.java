@@ -23,4 +23,13 @@ public class SQLiteConnector{
         return passwordHash.equals(result.getData()[0][0]);
     }
 
+    public void saveHighscore(String username, int highscore){
+        con.executeStatement("UPDATE User SET Highscore = " + highscore + " WHERE Username = '" + username + "'");
+    }
+
+    public String[][] getHighscores(){
+        con.executeStatement("SELECT Username, Highscore FROM User ORDER BY Highscore LIMIT 5");
+        return con.getCurrentQueryResult().getData();
+    }
+
 }

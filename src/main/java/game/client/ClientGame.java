@@ -1,13 +1,13 @@
 package game.client;
 
-import java.awt.Color;
+import Listenklassen.List;
+import game.PROTOKOLL;
 
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
-import java.util.*;
-
-
-import Listenklassen.List;
+import java.awt.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ClientGame{
 
@@ -22,7 +22,7 @@ public class ClientGame{
     List<Integer> fehler = new List<Integer>();
 
     int counter = 0;
-    double timeLeft = 60.0;
+    double timeLeft = 1.0;
     double apm = 0;
 
     TimerTask taskZeit = new TimerTask() {
@@ -64,6 +64,8 @@ public class ClientGame{
         gameRunning = false;
         timerZeit.cancel();
         threadAPM.interrupt();
+
+        clientHead.send(PROTOKOLL.CS_ENDEDGAME + PROTOKOLL.SEPARATOR + counter + ":" + countFehler());
     }
 
     public void action(char c){
@@ -84,6 +86,16 @@ public class ClientGame{
                 stopGame();
             }
         }
+    }
+
+    private int countFehler(){
+        int fehlerInt = 0;
+        for(fehler.toFirst(); fehler.hasAccess(); fehler.next()){
+            if(fehler.getContent() == 1){
+                fehlerInt++;
+            }
+        }
+        return fehlerInt;
     }
     
 }
