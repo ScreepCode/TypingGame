@@ -7,9 +7,15 @@ import Netzklassen.*;
 public class ServerHead extends Server{
 
 	private List<Spieler> spieler = new List<Spieler>();
+
+	SQLiteConnector connector = new SQLiteConnector("C:/Users/nicki/Desktop/TypingGame/database.db");
+	ServerLogin login;
 	
 	public ServerHead(int pPort) {
 		super(pPort);
+
+		System.out.println("SERVER: \n\n");
+		login = new ServerLogin(this);
 	}
 	
 
@@ -18,40 +24,21 @@ public class ServerHead extends Server{
 		spieler.append(new Spieler(pClientIP, pClientPort));
 		
 		String message = PROTOKOLL.SC_NOTIFICATION + PROTOKOLL.SEPARATOR;
-		this.send(pClientIP, pClientPort, message + "Willkommen bei meinem Spiel \nBitte wähle deinen Account aus");
+		this.send(pClientIP, pClientPort, message + "Willkommen bei meinem Spiel. Bitte wÃ¤hle deinen Account aus");
 	}
 
 	@Override
 	public void processMessage(String pClientIP, int pClientPort, String pMessage) {
-		String message = "";
-		String [] daten = pMessage.split(PROTOKOLL.SEPARATOR);
-		String prefix = daten[0];
-		Spieler tmpSpieler = this.spielerSuchen(pClientIP, pClientPort);
-		
+		int posSep1 = pMessage.indexOf(PROTOKOLL.SEPARATOR);
+		String prefix = pMessage.substring(0, posSep1);
+
 		switch (prefix) {
 			case PROTOKOLL.CS_ACC_LOGIN: {
-				String [] dataArr = daten[1].split(":");
-				if(dataArr.length == 1) {
-					if(dataArr[0] == "Guest") {
-						
-					}
-				}
-				else {
-					String username = dataArr[0];
-					String password = dataArr[1];
-					
-					//HIER DATENBANK ÜBERPRÜFUNG
-				}
-				
+				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 				}break;
 				
 			case PROTOKOLL.CS_ACC_CREATION: {
-				String [] dataArr = daten[1].split(":");
-				String username = dataArr[0];
-				String password = dataArr[1];
-				
-				//HIER DATENBANK EINFÜGEN
-				
+				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 				}break;
 		}
 	}
@@ -68,7 +55,7 @@ public class ServerHead extends Server{
 
 	@Override
 	public void processClosingConnection(String pClientIP, int pClientPort) {		
-		//Benutzer aus der Liste löschen
+		//Benutzer aus der Liste lï¿½schen
 		for(spieler.toFirst();spieler.hasAccess(); spieler.next()){
 			if(spieler.getContent().getIpAdresse().equals(pClientIP)&&spieler.getContent().getPort()==pClientPort){
 				spieler.remove();
@@ -77,7 +64,7 @@ public class ServerHead extends Server{
 	}
 	
 	
-	private Spieler spielerSuchen(String pClientIP, int pClientPort){
+	public Spieler spielerSuchen(String pClientIP, int pClientPort){
 		for(spieler.toFirst();spieler.hasAccess(); spieler.next()){
 			if(spieler.getContent().getIpAdresse().equals(pClientIP)&&spieler.getContent().getPort()==pClientPort){
 				return spieler.getContent();

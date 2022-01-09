@@ -24,58 +24,39 @@ public class ClientHead extends Client{
 	@Override
 	public void processMessage(String pMessage) {
 		System.out.println(pMessage);
-// 		String message = "";
-// 		String [] daten = pMessage.split(PROTOKOLL.SEPARATOR);
-// 		String prefix = daten[0];
-// 		switch (prefix) {
+		int posSep1 = pMessage.indexOf(PROTOKOLL.SEPARATOR);
+		String prefix = pMessage.substring(0, posSep1);
+		String daten = pMessage.substring(posSep1+1);
 		
-// //			###############LOGINPAGE#########################
-// 			case PROTOKOLL.SC_PHASES: {			
-// 				String phase = daten[1];
-// 				switch(phase) {
-// 					case "Login": {
-// 						//GUI LOAD LOGIN -> After Login
-// 						}break;
-						
-// 					case "Game": {
-// 						//GUI LOAD GAME -> Start LOGIC
-// 						}break;
-						
-// 					case "Ende": {
-// 						//GUI LOAD ENDSCREEN -> 
-// 						}break;
-// 				}
-// 			}break;
+		switch (prefix) {
+		
+//			###############LOGINPAGE#########################
 			
-// 			case PROTOKOLL.SC_LOGINSTATUS: {
-// 				String [] data = daten[1].split(":");
-// 				if(data[0] == "Success") {
-// 					//WECHSEL AUF WARTEBILDSCHIRM
+			case PROTOKOLL.SC_LOGINSTATUS: {
+				// String [] data = daten[1].split(":");
+				if(daten.equals("Success")) {
+					gui.setPanelLayout("lobby");
+					send(PROTOKOLL.CS_ENTERLOBBY + PROTOKOLL.SEPARATOR + " ");
+				}
+				
+				else if(daten.equals("Failed")) {
+					System.out.println("Fehler in der Anmeldung/Registrierung");
+				}
+				}break;
+				
+				
+//			###############LOBBYPAGE#########################
+			// case PROTOKOLL.SC_LOBBYLIST: {
+			// 	String [] allPlayers = daten.split("$");
+			// 	for(String player : allPlayers) {
+			// 		String username = player.split(":")[0];
+			// 		String highscore = player.split(":")[1];
 					
-					
-// 				}
+			// 		//F�GE SPIELEREINTRAG IN DER GUI HINZU
+			// 	}
 				
-// 				else if(data[0] == "Failed") {
-// 					String grund = data[1];
-// 					//MITTTEILUNG PASSWORT FALSCH MIT GRUND
-// 				}
-				
-				
-// 				}break;
-				
-				
-// //			###############LOBBYPAGE#########################
-// 			case PROTOKOLL.SC_LOBBYLIST: {
-// 				String [] allPlayers = daten[1].split("$");
-// 				for(String player : allPlayers) {
-// 					String username = player.split(":")[0];
-// 					String highscore = player.split(":")[1];
-					
-// 					//F�GE SPIELEREINTRAG IN DER GUI HINZU
-// 				}
-				
-// 				}break;
-// 		}
+			// 	}break;
+		}
 	}
 	
 

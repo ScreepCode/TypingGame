@@ -1,7 +1,6 @@
 package game.client;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import game.PROTOKOLL;
 
 public class ClientLogin {
