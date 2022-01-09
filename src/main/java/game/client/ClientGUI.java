@@ -46,6 +46,11 @@ public class ClientGUI extends JFrame implements KeyListener{
 		super("Typing Game Multiplayer");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+		ImageIcon img = new ImageIcon("Icon.png");
+		setIconImage(img.getImage());
+
+
+
 		this.clientHead = clientHead;
 		
 		//##############################################
