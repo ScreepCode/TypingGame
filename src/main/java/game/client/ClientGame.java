@@ -21,7 +21,7 @@ public class ClientGame{
     List<Integer> fehler = new List<>();
 
     int counter = 0;
-    double timeLeft = 120.0;
+    double timeLeft = 10.0;
     double apm = 0;
 
     TimerTask taskZeit = new TimerTask() {

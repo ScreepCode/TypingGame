@@ -88,6 +88,9 @@ public class ServerHead extends Server{
 				lobby.removePlayerFromLobby();
 			}
 		}
+		if(spieler.isEmpty()){
+			ergebnis.updateScoreList();
+		}
 	}
 	
 	
