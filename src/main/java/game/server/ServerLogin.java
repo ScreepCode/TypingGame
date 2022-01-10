@@ -82,7 +82,7 @@ public class ServerLogin {
         String[][] highscorelist = serverHead.connector.getHighscores();
 
         for(String [] row : highscorelist){
-            message += row[0] + ":" + row[1] + "§";
+            message += row[0] + ":" + row[1] + ";";
         }
 
         return message;

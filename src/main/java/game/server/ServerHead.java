@@ -8,7 +8,7 @@ public class ServerHead extends Server{
 
 	List<Spieler> spieler = new List<Spieler>();
 
-	SQLiteConnector connector = new SQLiteConnector("C:/Users/nicki/Desktop/TypingGame/database.db");
+	SQLiteConnector connector = new SQLiteConnector("database.db");
 	ServerLogin login;
 	ServerLobby lobby;
 	ServerErgebnis ergebnis;
@@ -72,7 +72,7 @@ public class ServerHead extends Server{
 	public void sendLobbyList() {
 		String message = PROTOKOLL.SC_LOBBYLIST + PROTOKOLL.SEPARATOR;
 		for(spieler.toFirst(); spieler.hasAccess(); spieler.next()) {
-			String tmpMessage = "$" + spieler.getContent().getNickName() + ":" + spieler.getContent().getHighscore();
+			String tmpMessage = ";" + spieler.getContent().getNickName() + ":" + spieler.getContent().getHighscore();
 			message += tmpMessage;
 		}
 		sendToAll(message);

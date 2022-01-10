@@ -46,7 +46,7 @@ public class ServerLobby {
             String name = spielerList.getContent().getNickName();
             int highscore = (int)spielerList.getContent().getHighscore();
             boolean ifReady = spielerList.getContent().getReadyStatus();
-            message += name + ":" + highscore + ":" + ifReady + "§";
+            message += name + ":" + highscore + ":" + ifReady + ";";
         }
         serverHead.sendToAll(message);
     }

@@ -55,7 +55,7 @@ public class ClientLogin {
         clientHead.gui.dTMHHSc.addColumn("Username");
         clientHead.gui.dTMHHSc.addColumn("Highscore");
         System.out.println(data);
-        String [] playerArr = data.split("§");
+        String [] playerArr = data.split(";");
         for(String player : playerArr){
             String [] playerData = player.split(":");
             String username = playerData[0];

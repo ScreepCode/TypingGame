@@ -44,7 +44,7 @@ public class ClientErgebnis {
         clientHead.gui.dTMSc.addColumn("Username");
         clientHead.gui.dTMSc.addColumn("Score");
 
-        String [] playerArr = data.split("§");
+        String [] playerArr = data.split(";");
         for(String player : playerArr){
             String [] playerData = player.split(":");
             String username = playerData[0];

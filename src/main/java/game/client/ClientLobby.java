@@ -40,7 +40,7 @@ public class ClientLobby {
         clientHead.gui.dTMLobby.addColumn("Highscore");
         clientHead.gui.dTMLobby.addColumn("Ready?");
 
-        String [] allPlayers = daten.split("§");
+        String [] allPlayers = daten.split(";");
         for(String player : allPlayers) {
             String [] playerData = player.split(":");
             if(playerData[1].equals("0")){
