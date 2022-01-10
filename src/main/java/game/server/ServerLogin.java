@@ -29,14 +29,15 @@ public class ServerLogin {
                 String passwordHash = daten.substring(posSep2+1);
 				
 				try {
-                    Boolean result = serverHead.connector.createAccount(username, passwordHash);
-                    if(result){
-                        tmpSpieler.setNickName(username);
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
+                    Boolean exists = serverHead.connector.checkIfAccountnameExists(username);
+                    if(exists){
+                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed" + ": Nutzername existiert bereits";
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                     else{
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed" + ": Nutzername existiert bereits";
+                        serverHead.connector.createAccount(username, passwordHash);
+                        tmpSpieler.setNickName(username);
+                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                 } catch (Exception e) {

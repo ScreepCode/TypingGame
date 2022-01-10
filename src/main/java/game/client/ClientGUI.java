@@ -39,6 +39,9 @@ public class ClientGUI extends JFrame implements KeyListener{
 	DefaultTableModel dTMSc = new DefaultTableModel();
 	JTable scoreTable;
 
+	DefaultTableModel dTMLobby = new DefaultTableModel();
+	JTable lobbyTable;
+
 	ClientHead clientHead;
 
 	
@@ -152,14 +155,12 @@ public class ClientGUI extends JFrame implements KeyListener{
 		lblLobby.setBounds(320, 0, 96, 40);
 		lblLobby.setFont(new Font("Tahoma", Font.PLAIN, 33));
 		panelLobby.add(lblLobby);
-		
-		// JList listL = new JList();
-		// listL.setBounds(31, 443, 282, -340);
-		// panelLobby.add(listL);
-		
-		// JList listR = new JList();
-		// listR.setBounds(411, 439, 282, -340);
-		// panelLobby.add(listR);
+
+		lobbyTable = new JTable(dTMLobby);
+		lobbyTable.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JScrollPane scrollLobbyTable = new JScrollPane(lobbyTable);
+		scrollLobbyTable.setBounds(50, 120, 650, 300);
+		panelLobby.add(scrollLobbyTable);
 		
 		JButton btnBereit = new JButton("Bereit");
 		btnBereit.addActionListener(new ActionListener() {
@@ -167,7 +168,7 @@ public class ClientGUI extends JFrame implements KeyListener{
 				clientHead.lobby.setReady();
 			}
 		});
-		btnBereit.setBounds(30, 452, 673, 50);
+		btnBereit.setBounds(50, 452, 650, 50);
 		panelLobby.add(btnBereit);
 		
 		lblReadyCounter = new JLabel("Bereit: 0/0");

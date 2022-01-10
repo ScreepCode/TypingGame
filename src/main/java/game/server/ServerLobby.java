@@ -39,6 +39,18 @@ public class ServerLobby {
 		}
     }
 
+    public void sendAllLobbyMembers(){
+        String message = PROTOKOLL.SC_LOBBYLIST + PROTOKOLL.SEPARATOR;
+        List<Spieler> spielerList = serverHead.spieler;
+        for(spielerList.toFirst(); spielerList.hasAccess(); spielerList.next()){
+            String name = spielerList.getContent().getNickName();
+            int highscore = (int)spielerList.getContent().getHighscore();
+            boolean ifReady = spielerList.getContent().getReadyStatus();
+            message += name + ":" + highscore + ":" + ifReady + "§";
+        }
+        serverHead.sendToAll(message);
+    }
+
 
     public void checkIfLobbyReady(){
         int lobbyMember = 0;
@@ -56,10 +68,15 @@ public class ServerLobby {
         else{
             serverHead.sendToAll(PROTOKOLL.SC_LOBBYSTATUS + PROTOKOLL.SEPARATOR + readyMember + "/" + lobbyMember);
         }
+
+        sendAllLobbyMembers();
     }
 
     public void addPlayerToLobby(Spieler spieler){
         spieler.setJoinedLobby(true);
+        if(!spieler.getNickName().startsWith("Guest")) {
+            spieler.setHighscore(serverHead.connector.getHighscore(spieler.getNickName()));
+        }
         checkIfLobbyReady();
     }
 

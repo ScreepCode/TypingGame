@@ -12,14 +12,14 @@ public class SQLiteConnector{
         con = new DatabaseConnector("", 0, dbName, "", "");
     }
 
-    public Boolean createAccount(String username, String passwordHash){
-        con.executeStatement("SELECT * FROM USER WHERE Username = '" + username +"'");
-        if(con.getCurrentQueryResult() == null){
-            String command = "INSERT INTO USER (Username, Password) VALUES ('"+ username +"', '" + passwordHash + "')";
+    public void createAccount(String username, String passwordHash){
+            String command = "INSERT INTO USER (Username, Password, Highscore) VALUES ('"+ username +"', '" + passwordHash + "', 0)";
             con.executeStatement(command);
-            return true;
-        }
-        return false;
+    }
+
+    public Boolean checkIfAccountnameExists(String username){
+        con.executeStatement("SELECT * FROM USER WHERE Username = '" + username +"'");
+        return (con.getCurrentQueryResult().getData().length != 0);
     }
 
     public boolean passwordCheck(String username, String passwordHash){
@@ -35,6 +35,11 @@ public class SQLiteConnector{
     public String[][] getHighscores(){
         con.executeStatement("SELECT Username, Highscore FROM User ORDER BY Highscore DESC LIMIT 5");
         return con.getCurrentQueryResult().getData();
+    }
+
+    public double getHighscore(String username){
+        con.executeStatement("SELECT Highscore FROM User WHERE Username = '" + username +"'");
+        return Double.parseDouble(con.getCurrentQueryResult().getData()[0][0]);
     }
 
 }

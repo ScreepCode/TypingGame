@@ -56,6 +56,9 @@ public class ClientHead extends Client{
 					System.out.println("Fehler in der Anmeldung/Registrierung");
 				}
 				}break;
+			case PROTOKOLL.SC_LOBBYLIST: {
+				lobby.setLobbyList(daten);
+				}break;
 
 			case PROTOKOLL.SC_LOBBYSTATUS: {
 				if(daten.equals("START")) {
@@ -73,19 +76,6 @@ public class ClientHead extends Client{
 			case PROTOKOLL.SC_ROUNDRESULT: {
 				ergebnis.updateScoreList(daten);
 			}break;
-				
-				
-//			###############LOBBYPAGE#########################
-			// case PROTOKOLL.SC_LOBBYLIST: {
-			// 	String [] allPlayers = daten.split("$");
-			// 	for(String player : allPlayers) {
-			// 		String username = player.split(":")[0];
-			// 		String highscore = player.split(":")[1];
-					
-			// 		//F�GE SPIELEREINTRAG IN DER GUI HINZU
-			// 	}
-				
-			// 	}break;
 		}
 	}
 	
