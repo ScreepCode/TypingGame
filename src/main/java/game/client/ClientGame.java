@@ -22,7 +22,7 @@ public class ClientGame{
     List<Integer> fehler = new List<Integer>();
 
     int counter = 0;
-    double timeLeft = 1.0;
+    double timeLeft = 5.0;
     double apm = 0;
 
     TimerTask taskZeit = new TimerTask() {
@@ -68,24 +68,34 @@ public class ClientGame{
         clientHead.send(PROTOKOLL.CS_ENDEDGAME + PROTOKOLL.SEPARATOR + counter + ":" + countFehler());
     }
 
-    public void action(char c){
+    public void typeChar(char c){
         if(gameRunning){
-            SimpleAttributeSet set = new SimpleAttributeSet();
-            
-            if(c == textAsCharArr[counter]){
-                fehler.append(0);
-                StyleConstants.setBackground(set, new Color(0, 128, 0));
-            }
-            else{
-                fehler.append(1);
-                StyleConstants.setBackground(set, new Color(128, 0, 0));
-            }
-            clientHead.gui.doc.setCharacterAttributes(counter, 1, set, true);
-            counter++;
-            if(counter == textAsCharArr.length){
-                stopGame();
+            if(c != '\b') {
+                SimpleAttributeSet set = new SimpleAttributeSet();
+                if (c == textAsCharArr[counter]) {
+                    fehler.append(0);
+                    StyleConstants.setBackground(set, new Color(0, 128, 0));
+                } else {
+                    fehler.append(1);
+                    StyleConstants.setBackground(set, new Color(128, 0, 0));
+                }
+                clientHead.gui.doc.setCharacterAttributes(counter, 1, set, true);
+                counter++;
+                if (counter == textAsCharArr.length) {
+                    stopGame();
+                }
             }
         }
+    }
+
+    public void removeLastChar(){
+        SimpleAttributeSet set1 = new SimpleAttributeSet();
+        fehler.toLast();
+        fehler.remove();
+        counter--;
+        StyleConstants.setBackground(set1, new Color(255, 255, 255));
+
+        clientHead.gui.doc.setCharacterAttributes(counter, 1, set1, true);
     }
 
     private int countFehler(){

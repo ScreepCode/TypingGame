@@ -392,11 +392,16 @@ public class ClientGUI extends JFrame implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		clientHead.game.action(e.getKeyChar());
+		clientHead.game.typeChar(e.getKeyChar());
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {}
+	public void keyPressed(KeyEvent e) {
+		System.out.println(e.getKeyCode() == KeyEvent.VK_BACK_SPACE);
+		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+			clientHead.game.removeLastChar();
+		}
+	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {}
