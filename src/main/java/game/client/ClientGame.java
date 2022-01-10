@@ -13,16 +13,15 @@ public class ClientGame{
 
     ClientHead clientHead;
     Boolean gameRunning = false;
-    Timer timer = new Timer();
+    Boolean gameCanStart = true;
     Timer timerZeit = new Timer();
-    Timer timerAPM = new Timer();
 
     String text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
     char[] textAsCharArr = text.toCharArray();
-    List<Integer> fehler = new List<Integer>();
+    List<Integer> fehler = new List<>();
 
     int counter = 0;
-    double timeLeft = 5.0;
+    double timeLeft = 120.0;
     double apm = 0;
 
     TimerTask taskZeit = new TimerTask() {
@@ -42,7 +41,7 @@ public class ClientGame{
         @Override
         public void run() {
             while(true){
-                apm = counter*60/(60-timeLeft);
+                apm = counter*60/(120-timeLeft);
                 clientHead.gui.lblAnschlaege.setText(Integer.toString((int)apm));
             }
         }
@@ -54,10 +53,13 @@ public class ClientGame{
     }
 
     public void startGame(){
-        clientHead.gui.setPanelLayout("game");
-        gameRunning = true;
-        threadAPM.start();
-        timerZeit.schedule(taskZeit, 0, 100);
+        if(gameCanStart){
+            clientHead.gui.setPanelLayout("game");
+            gameRunning = true;
+            threadAPM.start();
+            timerZeit.schedule(taskZeit, 0, 100);
+            gameCanStart = false;
+        }
     }
 
     public void stopGame(){
