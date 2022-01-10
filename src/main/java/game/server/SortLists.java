@@ -26,7 +26,7 @@ public class SortLists {
                 else{
                     scoreB = playerList.getContent().getScore();
                 }
-                if (scoreA > scoreB) {
+                if (scoreA < scoreB) {
                     swapInt(playerList, i, j);
                 }
             }
