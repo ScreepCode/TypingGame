@@ -92,7 +92,9 @@ public class ClientGame{
         SimpleAttributeSet set1 = new SimpleAttributeSet();
         fehler.toLast();
         fehler.remove();
-        counter--;
+        if(counter != 0) {
+            counter--;
+        }
         StyleConstants.setBackground(set1, new Color(255, 255, 255));
 
         clientHead.gui.doc.setCharacterAttributes(counter, 1, set1, true);

@@ -397,7 +397,6 @@ public class ClientGUI extends JFrame implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println(e.getKeyCode() == KeyEvent.VK_BACK_SPACE);
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
 			clientHead.game.removeLastChar();
 		}
