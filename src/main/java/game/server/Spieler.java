@@ -6,6 +6,7 @@ public class Spieler {
 	private String nickName; 
 	private double highscore;
 	private double score;
+	private Boolean joinedLobby;
 	private Boolean readyStatus;
 
 	public Spieler(String ipAdresse, int port) {
@@ -14,6 +15,7 @@ public class Spieler {
 		this.nickName = "";
 		this.highscore = 0.0;
 		this.score = 0.0;
+		this.joinedLobby = false;
 		this.readyStatus = false;
 	}
 
@@ -55,6 +57,14 @@ public class Spieler {
 	}
 
 	public void setReadyStatus(Boolean readyStatus) {
-		this.readyStatus = readyStatus;
+		this.readyStatus = joinedLobby;
+	}
+
+	public Boolean getJoinedLobby() {
+		return joinedLobby;
+	}
+
+	public void setJoinedLobby(Boolean joinedLobby) {
+		this.joinedLobby = joinedLobby;
 	}
 }

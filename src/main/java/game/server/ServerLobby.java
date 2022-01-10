@@ -1,12 +1,11 @@
 package game.server;
 
+import Listenklassen.List;
 import game.PROTOKOLL;
 
 public class ServerLobby {
 
     ServerHead serverHead;
-    int lobbyMember = 0;
-    int readyMember = 0;
 
     public ServerLobby(ServerHead serverHead) {
         this.serverHead = serverHead;
@@ -22,36 +21,50 @@ public class ServerLobby {
 
 		switch (prefix) {
             case PROTOKOLL.CS_ENTERLOBBY: {
-                lobbyMember++;
+                addPlayerToLobby(tmpSpieler);
 				checkIfLobbyReady();
                 }break;
-            
+
             case PROTOKOLL.CS_SETREADY: {
 				if(daten.equals("1")){
                     tmpSpieler.setReadyStatus(true);
-                    readyMember++;
                 }
                 else if(daten.equals("0")){
                     tmpSpieler.setReadyStatus(false);
-                    readyMember--;
                 }
                 checkIfLobbyReady();
 				}break;
 
-			
+
 		}
     }
 
 
     public void checkIfLobbyReady(){
-        if(lobbyMember > 0){
-            if(readyMember == lobbyMember){
-                serverHead.sendToAll(PROTOKOLL.SC_LOBBYSTATUS + PROTOKOLL.SEPARATOR + "START");
-            }
-            else{
-                serverHead.sendToAll(PROTOKOLL.SC_LOBBYSTATUS + PROTOKOLL.SEPARATOR + readyMember + "/" + lobbyMember);
-            }
+        int lobbyMember = 0;
+        int readyMember = 0;
+
+        List<Spieler> spielerList = serverHead.spieler;
+        for(spielerList.toFirst(); spielerList.hasAccess(); spielerList.next()){
+            if(spielerList.getContent().getJoinedLobby()){ lobbyMember++; }
+            if(spielerList.getContent().getReadyStatus()){ readyMember++; }
         }
+
+        if(readyMember == lobbyMember){
+            serverHead.sendToAll(PROTOKOLL.SC_LOBBYSTATUS + PROTOKOLL.SEPARATOR + "START");
+        }
+        else{
+            serverHead.sendToAll(PROTOKOLL.SC_LOBBYSTATUS + PROTOKOLL.SEPARATOR + readyMember + "/" + lobbyMember);
+        }
+    }
+
+    public void addPlayerToLobby(Spieler spieler){
+        spieler.setJoinedLobby(true);
+        checkIfLobbyReady();
+    }
+
+    public void removePlayerFromLobby(){
+        checkIfLobbyReady();
     }
     
 }

@@ -81,10 +81,11 @@ public class ServerHead extends Server{
 
 	@Override
 	public void processClosingConnection(String pClientIP, int pClientPort) {		
-		//Benutzer aus der Liste l�schen
+		//Benutzer aus der Liste löschen
 		for(spieler.toFirst();spieler.hasAccess(); spieler.next()){
 			if(spieler.getContent().getIpAdresse().equals(pClientIP)&&spieler.getContent().getPort()==pClientPort){
 				spieler.remove();
+				lobby.removePlayerFromLobby();
 			}
 		}
 	}
