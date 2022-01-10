@@ -53,7 +53,7 @@ public class ServerLogin {
 				if(dataArr.length == 1) {
 					if(dataArr[0].equals("Guest")) {
 						tmpSpieler.setNickName("Guest" + new Random().nextInt(100));
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
+                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success:" + tmpSpieler.getNickName();
                         serverHead.send(pClientIP, pClientPort, antwort);
 					}
 				}
@@ -64,7 +64,7 @@ public class ServerLogin {
 					
 					if(serverHead.connector.passwordCheck(username, passwordHash)){
                         tmpSpieler.setNickName(username);
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
+                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success:" + tmpSpieler.getNickName();
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                     else{

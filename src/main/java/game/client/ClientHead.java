@@ -47,7 +47,8 @@ public class ClientHead extends Client{
 
 			case PROTOKOLL.SC_LOGINSTATUS: {
 				// String [] data = daten[1].split(":");
-				if(daten.equals("Success")) {
+				if(daten.startsWith("Success")) {
+					gui.setTitle(gui.getTitle() + " --> " + daten.split(":")[1]);
 					gui.setPanelLayout("lobby");
 					send(PROTOKOLL.CS_ENTERLOBBY + PROTOKOLL.SEPARATOR + " ");
 				}
