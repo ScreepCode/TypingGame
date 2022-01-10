@@ -206,7 +206,7 @@ public class ClientGUI extends JFrame implements KeyListener{
 		panelGame.add(lblZeitLabel2);
 		lblZeitLabel2.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
-		JLabel lblAnschlaegeLabel = new JLabel("Anschl\u00E4ge p/m:");
+		JLabel lblAnschlaegeLabel = new JLabel("Anschl\u00E4ge/m:");
 		lblAnschlaegeLabel.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		lblAnschlaegeLabel.setBounds(46, 92, 186, 36);
 		panelGame.add(lblAnschlaegeLabel);
@@ -271,7 +271,7 @@ public class ClientGUI extends JFrame implements KeyListener{
 		panelErgebnis.add(scrollScoreTable);
 
 		
-		JLabel lblAnschlaegePM = new JLabel("Anschl\u00E4ge p/m");
+		JLabel lblAnschlaegePM = new JLabel("Anschl\u00E4ge/m");
 		lblAnschlaegePM.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblAnschlaegePM.setBounds(179, 206, 146, 40);
 		panelErgebnis.add(lblAnschlaegePM);
