@@ -185,7 +185,7 @@ public class ClientGUI extends JFrame implements KeyListener{
 		panelGame.setLayout(null);
 		panelGame.addKeyListener(this);
 		
-		JLabel lblGame = new JLabel("Schreib so gut und schnell zu kannst");
+		JLabel lblGame = new JLabel("Schreib so gut und schnell du kannst");
 		lblGame.setFont(new Font("Tahoma", Font.PLAIN, 36));
 		lblGame.setBounds(83, 0, 587, 67);
 		panelGame.add(lblGame);
