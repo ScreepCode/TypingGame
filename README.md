@@ -26,15 +26,15 @@ Eine schriftliche Dokumentation zum Netzwerkverkehr finden sie [hier für den Se
 
 Zur Veranschaulichung habe ich hier die Klassendiagramme angefügt, die ein erstes Verständnis über die Funktionsweise geben können. ^^
 
-####Gesamtes Projekt:
+#### Gesamtes Projekt:
 
 ![img.png](img.png)
 
-####UML zum Server:
+#### UML zum Server:
 
 ![Server UML](https://raw.githubusercontent.com/ScreepCode/TypingGame/master/src/main/java/game/server/ServerHead_structure.svg)
 
-####UML zum SpielClient:
+#### UML zum SpielClient:
 
 ![Client UML](https://raw.githubusercontent.com/ScreepCode/TypingGame/master/src/main/java/game/client/ClientHead_structure.svg)
 
