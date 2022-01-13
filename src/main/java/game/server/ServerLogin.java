@@ -61,7 +61,7 @@ public class ServerLogin {
                         String antwort = SC_LOGINSTATUS + SEPARATOR + "Success:" + tmpSpieler.getNickName();
                         serverHead.send(pClientIP, pClientPort, antwort);
                     } else {
-                        String antwort = SC_LOGINSTATUS + SEPARATOR + "Failed";
+                        String antwort = SC_LOGINSTATUS + SEPARATOR + "Failed: Die Daten passen nicht zusammen";
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                 }
