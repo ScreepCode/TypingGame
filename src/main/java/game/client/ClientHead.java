@@ -48,7 +48,7 @@ public class ClientHead extends Client{
 					gui.setPanelLayout("lobby");
 					send(CS_ENTERLOBBY + SEPARATOR + " ");
 				} else if (daten.equals("Failed")) {
-					System.out.println("Fehler in der Anmeldung/Registrierung");
+					System.out.println(daten.replace("Failed:", ""));
 				}
 			}
 			case SC_LOBBYLIST -> lobby.setLobbyList(daten);
