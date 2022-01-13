@@ -22,19 +22,18 @@ public class ServerLogin {
 
         Spieler tmpSpieler = serverHead.spielerSuchen(pClientIP, pClientPort);
 
-		switch (prefix) {
-            case PROTOKOLL.CS_ACC_CREATION: {
-				int posSep2 = daten.indexOf(':');
+        switch (prefix) {
+            case PROTOKOLL.CS_ACC_CREATION -> {
+                int posSep2 = daten.indexOf(':');
                 String username = daten.substring(0, posSep2);
-                String passwordHash = daten.substring(posSep2+1);
-				
-				try {
+                String passwordHash = daten.substring(posSep2 + 1);
+
+                try {
                     Boolean exists = serverHead.connector.checkIfAccountnameExists(username);
-                    if(exists){
+                    if (exists) {
                         String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed" + ": Nutzername existiert bereits";
                         serverHead.send(pClientIP, pClientPort, antwort);
-                    }
-                    else{
+                    } else {
                         serverHead.connector.createAccount(username, passwordHash);
                         tmpSpieler.setNickName(username);
                         String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
@@ -45,36 +44,33 @@ public class ServerLogin {
                     String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed" + ": Unbekannter Fehler aufgetreten";
                     serverHead.send(pClientIP, pClientPort, antwort);
                 }
-				
-				}break;
 
-			case PROTOKOLL.CS_ACC_LOGIN: {
-				String [] dataArr = daten.split(":");
-				if(dataArr.length == 1) {
-					if(dataArr[0].equals("Guest")) {
-						tmpSpieler.setNickName("Guest" + new Random().nextInt(100));
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success:" + tmpSpieler.getNickName();
-                        serverHead.send(pClientIP, pClientPort, antwort);
-					}
-				}
-				else {
-					int posSep2 = daten.indexOf(':');
-                    String username = daten.substring(0, posSep2);
-                    String passwordHash = daten.substring(posSep2+1);
-					
-					if(serverHead.connector.passwordCheck(username, passwordHash)){
-                        tmpSpieler.setNickName(username);
+            }
+            case PROTOKOLL.CS_ACC_LOGIN -> {
+                String[] dataArr = daten.split(":");
+                if (dataArr.length == 1) {
+                    if (dataArr[0].equals("Guest")) {
+                        tmpSpieler.setNickName("Guest" + new Random().nextInt(100));
                         String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success:" + tmpSpieler.getNickName();
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
-                    else{
+                } else {
+                    int posSep2 = daten.indexOf(':');
+                    String username = daten.substring(0, posSep2);
+                    String passwordHash = daten.substring(posSep2 + 1);
+
+                    if (serverHead.connector.passwordCheck(username, passwordHash)) {
+                        tmpSpieler.setNickName(username);
+                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success:" + tmpSpieler.getNickName();
+                        serverHead.send(pClientIP, pClientPort, antwort);
+                    } else {
                         String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed";
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                 }
-				
-				}break;
-		}
+
+            }
+        }
     }
 
     public String getHighscores(){

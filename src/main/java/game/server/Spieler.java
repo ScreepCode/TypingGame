@@ -57,7 +57,7 @@ public class Spieler {
 	}
 
 	public void setReadyStatus(Boolean readyStatus) {
-		this.readyStatus = joinedLobby;
+		this.readyStatus = readyStatus;
 	}
 
 	public Boolean getJoinedLobby() {

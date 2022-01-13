@@ -47,8 +47,6 @@ public class ClientErgebnis {
         String [] playerArr = data.split(";");
         for(String player : playerArr){
             String [] playerData = player.split(":");
-            String username = playerData[0];
-            String score = playerData[1];
 
             clientHead.gui.dTMSc.addRow(playerData);
         }

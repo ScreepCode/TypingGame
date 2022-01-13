@@ -22,13 +22,13 @@ public class ClientLobby {
     }
     
     public void setReady(){
-        if(readyStatus == false){
-            readyStatus = true;
-            clientHead.send(PROTOKOLL.CS_SETREADY + PROTOKOLL.SEPARATOR + "1");
-        }
-        else if(readyStatus == true){
+        if(readyStatus){
             readyStatus = false;
             clientHead.send(PROTOKOLL.CS_SETREADY + PROTOKOLL.SEPARATOR + "0");
+        }
+        else{
+            readyStatus = true;
+            clientHead.send(PROTOKOLL.CS_SETREADY + PROTOKOLL.SEPARATOR + "1");
         }
     }
 

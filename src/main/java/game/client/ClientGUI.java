@@ -112,7 +112,7 @@ public class ClientGUI extends JFrame implements KeyListener{
 		btnAccErstellen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = textFieldUsername.getText();
-				String password = textFieldPassword.getText();
+				String password = new String(textFieldPassword.getPassword());
 				clientHead.login.accCreation(username, password);
 			}
 		});
@@ -124,7 +124,7 @@ public class ClientGUI extends JFrame implements KeyListener{
 		btnAnmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = textFieldUsername.getText();
-				String password = textFieldPassword.getText();
+				String password = new String(textFieldPassword.getPassword());
 				clientHead.login.accLogin(username, password);
 			}
 		});
@@ -364,30 +364,33 @@ public class ClientGUI extends JFrame implements KeyListener{
 	}
 
 	public void setPanelLayout(String panelType){
-		if(panelType.equals("login")){
-			panelLogin.setVisible(true);
-			panelLobby.setVisible(false);
-			panelGame.setVisible(false);
-			panelErgebnis.setVisible(false);
+		switch (panelType) {
+			case ("login") -> {
+				panelLogin.setVisible(true);
+				panelLobby.setVisible(false);
+				panelGame.setVisible(false);
+				panelErgebnis.setVisible(false);
+			}
+			case ("lobby") -> {
+				panelLogin.setVisible(false);
+				panelLobby.setVisible(true);
+				panelGame.setVisible(false);
+				panelErgebnis.setVisible(false);
+			}
+			case ("game") -> {
+				panelLogin.setVisible(false);
+				panelLobby.setVisible(false);
+				panelGame.setVisible(true);
+				panelErgebnis.setVisible(false);
+			}
+			case ("ergebnis") -> {
+				panelLogin.setVisible(false);
+				panelLobby.setVisible(false);
+				panelGame.setVisible(false);
+				panelErgebnis.setVisible(true);
+			}
 		}
-		else if(panelType.equals("lobby")){
-			panelLogin.setVisible(false);
-			panelLobby.setVisible(true);
-			panelGame.setVisible(false);
-			panelErgebnis.setVisible(false);
-		}
-		else if(panelType.equals("game")){
-			panelLogin.setVisible(false);
-			panelLobby.setVisible(false);
-			panelGame.setVisible(true);
-			panelErgebnis.setVisible(false);
-		}
-		else if(panelType.equals("ergebnis")){
-			panelLogin.setVisible(false);
-			panelLobby.setVisible(false);
-			panelGame.setVisible(false);
-			panelErgebnis.setVisible(true);
-		}
+
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import Netzklassen.*;
 
 public class ServerHead extends Server{
 
-	List<Spieler> spieler = new List<Spieler>();
+	List<Spieler> spieler = new List<>();
 
 	SQLiteConnector connector = new SQLiteConnector("database.db");
 	ServerLogin login;
@@ -38,46 +38,29 @@ public class ServerHead extends Server{
 		String prefix = pMessage.substring(0, posSep1);
 
 		switch (prefix) {
-			case PROTOKOLL.CS_REQUESTHIGHSCORELIST: {
+			case PROTOKOLL.CS_REQUESTHIGHSCORELIST -> {
 				this.send(pClientIP, pClientPort, login.getHighscores());
-			}break;
-
-			case PROTOKOLL.CS_ACC_LOGIN: {
+			}
+			case PROTOKOLL.CS_ACC_LOGIN -> {
 				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-				}break;
-				
-			case PROTOKOLL.CS_ACC_CREATION: {
+			}
+			case PROTOKOLL.CS_ACC_CREATION -> {
 				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-				}break;			
-			
-			
-			case PROTOKOLL.CS_ENTERLOBBY:{
+			}
+			case PROTOKOLL.CS_ENTERLOBBY -> {
 				lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-				}break;
-
-			case PROTOKOLL.CS_SETREADY: {
+			}
+			case PROTOKOLL.CS_SETREADY -> {
 				lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-				}break;
-
-			case PROTOKOLL.CS_ENDEDGAME: {
+			}
+			case PROTOKOLL.CS_ENDEDGAME -> {
 				ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-				}break;
-
-			case PROTOKOLL.CS_SAVEHIGHSCORE: {
+			}
+			case PROTOKOLL.CS_SAVEHIGHSCORE -> {
 				ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-				}break;
+			}
 		}
 	}
-	
-	public void sendLobbyList() {
-		String message = PROTOKOLL.SC_LOBBYLIST + PROTOKOLL.SEPARATOR;
-		for(spieler.toFirst(); spieler.hasAccess(); spieler.next()) {
-			String tmpMessage = ";" + spieler.getContent().getNickName() + ":" + spieler.getContent().getHighscore();
-			message += tmpMessage;
-		}
-		sendToAll(message);
-	}
-	
 
 	@Override
 	public void processClosingConnection(String pClientIP, int pClientPort) {		

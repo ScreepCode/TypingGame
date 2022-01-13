@@ -4,14 +4,14 @@ import Listenklassen.List;
 
 public class SortLists {
 
-    static public List sortPlayerByScore(List<Spieler> playerList, String whichScore){
+    static public List<Spieler> sortPlayerByScore(List<Spieler> playerList, String whichScore){
         playerList.toFirst();
 
         for(int i = 0; i<length(playerList); i++) {
             for (int j = i; j < length(playerList); j++) {
                 goTo(playerList, i);
-                double scoreA = 0;
-                if(whichScore == "Highscore"){
+                double scoreA;
+                if(whichScore.equals("Highscore")){
                     scoreA = playerList.getContent().getHighscore();
                 }
                 else{
@@ -19,8 +19,8 @@ public class SortLists {
                 }
                 goTo(playerList, j);
 
-                double scoreB = 0;
-                if(whichScore == "Highscore"){
+                double scoreB;
+                if(whichScore.equals("Highscore")){
                     scoreB = playerList.getContent().getHighscore();
                 }
                 else{

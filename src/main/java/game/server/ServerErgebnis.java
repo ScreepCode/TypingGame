@@ -19,19 +19,17 @@ public class ServerErgebnis {
         Spieler tmpSpieler = serverHead.spielerSuchen(pClientIP, pClientPort);
 
         switch (prefix) {
-            case PROTOKOLL.CS_ENDEDGAME: {
+            case PROTOKOLL.CS_ENDEDGAME -> {
                 String[] dataArr = daten.split(":");
-                int keys = Integer.parseInt(dataArr[0]);
-                int errors = Integer.parseInt(dataArr[1]);
 
                 //Ergebnisse:
-                double resultKeys = keys;
-                double resultAPM = (resultKeys*60)/120;
-                double resultErrors = errors;
-                String resultRechnung = "" + (int)resultKeys + "*(1-(" + (int)resultErrors + "/" + (int)resultKeys + "))";
-                double resultPunktzahl = (resultKeys*(1-(resultErrors/resultKeys)));
+                double resultKeys = Double.parseDouble(dataArr[0]);
+                double resultErrors = Double.parseDouble(dataArr[1]);
+                double resultAPM = (resultKeys * 60) / 120;
+                String resultRechnung = "" + (int) resultKeys + "*(1-(" + (int) resultErrors + "/" + (int) resultKeys + "))";
+                double resultPunktzahl = (resultKeys * (1 - (resultErrors / resultKeys)));
 
-                String message = PROTOKOLL.SC_OWNRESULT + PROTOKOLL.SEPARATOR + (int)resultKeys + ":" + (int)resultAPM + ":" + (int)resultErrors + ":" + resultRechnung + ":" + (int)resultPunktzahl + ":" + (tmpSpieler.getHighscore() < resultPunktzahl);
+                String message = PROTOKOLL.SC_OWNRESULT + PROTOKOLL.SEPARATOR + (int) resultKeys + ":" + (int) resultAPM + ":" + (int) resultErrors + ":" + resultRechnung + ":" + (int) resultPunktzahl + ":" + (tmpSpieler.getHighscore() < resultPunktzahl);
                 serverHead.send(pClientIP, pClientPort, message);
 
                 tmpSpieler.setHighscore(resultPunktzahl);
@@ -39,11 +37,9 @@ public class ServerErgebnis {
 
                 updateScoreList();
             }
-            break;
-            case PROTOKOLL.CS_SAVEHIGHSCORE: {
-                serverHead.connector.saveHighscore(tmpSpieler.getNickName(), (int)tmpSpieler.getHighscore());
+            case PROTOKOLL.CS_SAVEHIGHSCORE -> {
+                serverHead.connector.saveHighscore(tmpSpieler.getNickName(), (int) tmpSpieler.getHighscore());
             }
-            break;
         }
     }
 

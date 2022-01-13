@@ -19,24 +19,20 @@ public class ServerLobby {
 
         Spieler tmpSpieler = serverHead.spielerSuchen(pClientIP, pClientPort);
 
-		switch (prefix) {
-            case PROTOKOLL.CS_ENTERLOBBY: {
+        switch (prefix) {
+            case PROTOKOLL.CS_ENTERLOBBY -> {
                 addPlayerToLobby(tmpSpieler);
-				checkIfLobbyReady();
-                }break;
-
-            case PROTOKOLL.CS_SETREADY: {
-				if(daten.equals("1")){
+                checkIfLobbyReady();
+            }
+            case PROTOKOLL.CS_SETREADY -> {
+                if (daten.equals("1")) {
                     tmpSpieler.setReadyStatus(true);
-                }
-                else if(daten.equals("0")){
+                } else if (daten.equals("0")) {
                     tmpSpieler.setReadyStatus(false);
                 }
                 checkIfLobbyReady();
-				}break;
-
-
-		}
+            }
+        }
     }
 
     public void sendAllLobbyMembers(){
