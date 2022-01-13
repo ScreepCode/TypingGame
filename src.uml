@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/nicki/Desktop/TypingGame/src</OriginalElement>
+  <nodes>
+    <node x="1081.75" y="1082.5">game.server.SortLists</node>
+    <node x="134.97285615491182" y="227.5">Netzklassen.Client.MessageHandler</node>
+    <node x="1397.5978561549118" y="1428.0">game.server.ServerLobby</node>
+    <node x="2126.875" y="1060.0">game.server.SQLiteConnector</node>
+    <node x="344.98893499308474" y="1894.0">game.client.ClientErgebnis</node>
+    <node x="288.4728561549118" y="1472.0">game.client.ClientHead</node>
+    <node x="1063.9728561549118" y="1461.0">game.server.ServerErgebnis</node>
+    <node x="312.9728561549118" y="1093.0">game.client.ClientLobby</node>
+    <node x="2422.875" y="994.0">Netzklassen.Server</node>
+    <node x="244.0" y="2060.0">Listenklassen.Stack</node>
+    <node x="1123.9728561549118" y="227.0">Listenklassen.List.ListNode</node>
+    <node x="1976.988934993085" y="1916.0">game.server.ServerMain</node>
+    <node x="3.499999999999986" y="2254.0">Listenklassen.Queue.QueueNode</node>
+    <node x="134.47285615491182" y="566.0">Netzklassen.Client</node>
+    <node x="2897.972856154912" y="205.0">Netzklassen.Server.ClientMessageHandler.ClientSocketWrapper</node>
+    <node x="1711.5978561549118" y="1460.5">game.server.ServerLogin</node>
+    <node x="390.03215767635015" y="1687.5">game.client.ClientGUI</node>
+    <node x="0.0" y="2060.0">Listenklassen.Queue</node>
+    <node x="2249.15715767635" y="216.0">Datenbankklassen.Queue</node>
+    <node x="1968.1571576763502" y="172.0">Datenbankklassen.QueryResult</node>
+    <node x="69.97285615491182" y="1082.5">game.client.ClientLogin</node>
+    <node x="2253.823824343017" y="0.0">Datenbankklassen.Queue.QueueNode</node>
+    <node x="858.9728561549119" y="611.0">game.PROTOKOLL</node>
+    <node x="247.0" y="2254.0">Listenklassen.Stack.StackNode</node>
+    <node x="1111.4728561549118" y="489.0">Listenklassen.List</node>
+    <node x="1694.3478561549118" y="456.0">game.server.Spieler</node>
+    <node x="480.0" y="2060.0">Netzklassen.Connection</node>
+    <node x="1913.488934993085" y="1677.0">game.server.ServerHead</node>
+    <node x="185.875" y="0.5">Netzklassen.Client.MessageHandler.SocketWrapper</node>
+    <node x="2727.336791147997" y="588.5">Netzklassen.Server.NewConnectionHandler</node>
+    <node x="2957.336791147997" y="555.0">Netzklassen.Server.ClientMessageHandler</node>
+    <node x="765.9728561549119" y="1721.0">game.client.ClientMain</node>
+    <node x="525.9728561549119" y="1071.5">game.client.ClientGame</node>
+    <node x="2082.972856154912" y="554.5">Datenbankklassen.DatabaseConnector</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="game.server.ServerHead" target="game.PROTOKOLL" relationship="DEPENDENCY">
+      <point x="-103.5" y="-82.5" />
+      <point x="1947.988934993085" y="1655.0" />
+      <point x="1186.488934993085" y="1655.0" />
+      <point x="1186.488934993085" y="1635.0" />
+      <point x="955.2228561549119" y="1635.0" />
+      <point x="955.2228561549119" y="962.0" />
+      <point x="925.4728561549119" y="962.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="game.server.ServerHead" target="game.server.ServerLogin" relationship="CREATE">
+      <point x="-34.5" y="-82.5" />
+      <point x="2016.988934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1625.0" />
+      <point x="1858.5978561549118" y="1625.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="game.server.ServerHead" target="game.server.Spieler" relationship="CREATE">
+      <point x="-34.5" y="-82.5" />
+      <point x="2016.988934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1625.0" />
+      <point x="2062.461791147997" y="1625.0" />
+      <point x="2062.461791147997" y="932.0" />
+      <point x="1815.0978561549118" y="932.0" />
+      <point x="40.25" y="182.0" />
+    </edge>
+    <edge source="game.server.SQLiteConnector" target="Datenbankklassen.DatabaseConnector" relationship="TO_ONE">
+      <point x="92.0" y="-94.0" />
+      <point x="2356.875" y="932.0" />
+      <point x="2327.472856154912" y="932.0" />
+      <point x="81.5" y="83.5" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientErgebnis" relationship="CREATE">
+      <point x="66.66666666666674" y="38.5" />
+      <point x="455.13952282157857" y="1625.0" />
+      <point x="840.4728561549119" y="1625.0" />
+      <point x="840.4728561549119" y="1655.0" />
+      <point x="1138.9889349930847" y="1655.0" />
+      <point x="1138.9889349930847" y="1873.0" />
+      <point x="509.98893499308474" y="1873.0" />
+      <point x="66.0" y="-60.5" />
+    </edge>
+    <edge source="game.client.ClientLogin" target="game.client.ClientHead" relationship="DEPENDENCY">
+      <point x="74.33333333333326" y="71.5" />
+      <point x="255.80618948824508" y="1366.0" />
+      <point x="656.0833333333334" y="1366.0" />
+      <point x="656.0833333333334" y="1406.0" />
+      <point x="463.4728561549118" y="1406.0" />
+      <point x="75.0" y="-38.5" />
+    </edge>
+    <edge source="game.server.ServerLobby" target="game.PROTOKOLL" relationship="DEPENDENCY">
+      <point x="0.0" y="-82.5" />
+      <point x="1544.5978561549118" y="1366.0" />
+      <point x="1534.3478561549118" y="1366.0" />
+      <point x="1534.3478561549118" y="962.0" />
+      <point x="925.4728561549119" y="962.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientGUI" relationship="TO_ONE">
+      <point x="-66.66666666666674" y="38.5" />
+      <point x="321.8061894882451" y="1635.0" />
+      <point x="349.7228561549118" y="1635.0" />
+      <point x="349.7228561549118" y="1655.0" />
+      <point x="422.53215767635015" y="1655.0" />
+      <point x="-65.0" y="-72.0" />
+    </edge>
+    <edge source="game.client.ClientGUI" target="game.client.ClientHead" relationship="TO_ONE">
+      <point x="-65.0" y="-72.0" />
+      <point x="422.53215767635015" y="1655.0" />
+      <point x="349.7228561549118" y="1655.0" />
+      <point x="349.7228561549118" y="1635.0" />
+      <point x="321.8061894882451" y="1635.0" />
+      <point x="-66.66666666666674" y="38.5" />
+    </edge>
+    <edge source="game.client.ClientErgebnis" target="game.PROTOKOLL" relationship="DEPENDENCY">
+      <point x="0.0" y="-60.5" />
+      <point x="443.98893499308474" y="1863.0" />
+      <point x="925.4728561549119" y="1863.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="game.server.ServerHead" target="game.server.SQLiteConnector" relationship="CREATE">
+      <point x="-34.5" y="-82.5" />
+      <point x="2016.988934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1625.0" />
+      <point x="2264.875" y="1625.0" />
+      <point x="0.0" y="94.0" />
+    </edge>
+    <edge source="Netzklassen.Client.MessageHandler" target="Netzklassen.Client" relationship="INNER_CLASS">
+      <point x="-24.875" y="60.5" />
+      <point x="-25.0" y="-72.0" />
+    </edge>
+    <edge source="game.server.ServerLobby" target="game.server.SQLiteConnector" relationship="DEPENDENCY">
+      <point x="0.0" y="-82.5" />
+      <point x="1544.5978561549118" y="1386.0" />
+      <point x="1597.5867911479968" y="1386.0" />
+      <point x="1597.5867911479968" y="1346.0" />
+      <point x="2172.875" y="1346.0" />
+      <point x="-92.0" y="94.0" />
+    </edge>
+    <edge source="game.client.ClientLobby" target="game.client.ClientHead" relationship="TO_ONE">
+      <point x="-64.33333333333326" y="61.0" />
+      <point x="345.13952282157857" y="1386.0" />
+      <point x="120.72285615491182" y="1386.0" />
+      <point x="120.72285615491182" y="1406.0" />
+      <point x="363.4728561549118" y="1406.0" />
+      <point x="-25.0" y="-38.5" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientLobby" relationship="TO_ONE">
+      <point x="-25.0" y="-38.5" />
+      <point x="363.4728561549118" y="1406.0" />
+      <point x="120.72285615491182" y="1406.0" />
+      <point x="120.72285615491182" y="1386.0" />
+      <point x="345.13952282157857" y="1386.0" />
+      <point x="-64.33333333333326" y="61.0" />
+    </edge>
+    <edge source="game.server.ServerHead" target="Listenklassen.List" relationship="CREATE">
+      <point x="-34.5" y="-82.5" />
+      <point x="2016.988934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1625.0" />
+      <point x="966.2228561549119" y="1625.0" />
+      <point x="966.2228561549119" y="932.0" />
+      <point x="1068.4296334716466" y="932.0" />
+      <point x="1068.4296334716466" y="862.0" />
+      <point x="1148.3061894882453" y="862.0" />
+      <point x="-73.66666666666674" y="149.0" />
+    </edge>
+    <edge source="game.server.ServerLobby" target="Listenklassen.List" relationship="DEPENDENCY">
+      <point x="0.0" y="-82.5" />
+      <point x="1544.5978561549118" y="1366.0" />
+      <point x="1534.3478561549118" y="1366.0" />
+      <point x="1534.3478561549118" y="972.0" />
+      <point x="1309.1796334716466" y="972.0" />
+      <point x="1309.1796334716466" y="862.0" />
+      <point x="1221.9728561549118" y="862.0" />
+      <point x="0.0" y="149.0" />
+    </edge>
+    <edge source="game.server.ServerLobby" target="game.server.ServerHead" relationship="TO_ONE">
+      <point x="98.0" y="82.5" />
+      <point x="1642.5978561549118" y="1615.0" />
+      <point x="2400.738934993085" y="1615.0" />
+      <point x="2400.738934993085" y="1655.0" />
+      <point x="2085.988934993085" y="1655.0" />
+      <point x="34.5" y="-82.5" />
+    </edge>
+    <edge source="game.server.ServerHead" target="game.server.ServerLobby" relationship="TO_ONE">
+      <point x="34.5" y="-82.5" />
+      <point x="2085.988934993085" y="1655.0" />
+      <point x="2400.738934993085" y="1655.0" />
+      <point x="2400.738934993085" y="1615.0" />
+      <point x="1642.5978561549118" y="1615.0" />
+      <point x="98.0" y="82.5" />
+    </edge>
+    <edge source="Listenklassen.List.ListNode" target="Listenklassen.List" relationship="INNER_CLASS">
+      <point x="65.33333333333326" y="61.0" />
+      <point x="1287.3061894882453" y="435.0" />
+      <point x="1295.6395228215788" y="435.0" />
+      <point x="73.66666666666674" y="-149.0" />
+    </edge>
+    <edge source="Listenklassen.Queue" target="Listenklassen.Queue.QueueNode" relationship="CREATE">
+      <point x="-66.33333333333333" y="72.0" />
+      <point x="33.16666666666667" y="2229.0" />
+      <point x="35.499999999999986" y="2229.0" />
+      <point x="-64.0" y="-61.0" />
+    </edge>
+    <edge source="Netzklassen.Server" target="Listenklassen.List" relationship="TO_ONE">
+      <point x="-140.62500000000006" y="-160.0" />
+      <point x="2469.75" y="932.0" />
+      <point x="2818.875" y="932.0" />
+      <point x="2818.875" y="892.0" />
+      <point x="2743.472856154912" y="892.0" />
+      <point x="2743.472856154912" y="852.0" />
+      <point x="1295.6395228215788" y="852.0" />
+      <point x="73.66666666666674" y="149.0" />
+    </edge>
+    <edge source="Netzklassen.Server.NewConnectionHandler" target="Netzklassen.Server" relationship="DEPENDENCY">
+      <point x="78.75" y="49.5" />
+      <point x="2911.086791147997" y="842.0" />
+      <point x="3074.63796680498" y="842.0" />
+      <point x="3074.63796680498" y="902.0" />
+      <point x="2751.0" y="902.0" />
+      <point x="140.625" y="-160.0" />
+    </edge>
+    <edge source="Listenklassen.List" target="Listenklassen.List.ListNode" relationship="CREATE">
+      <point x="-73.66666666666674" y="-149.0" />
+      <point x="1148.3061894882453" y="435.0" />
+      <point x="1156.6395228215788" y="435.0" />
+      <point x="-65.33333333333326" y="61.0" />
+    </edge>
+    <edge source="game.server.ServerHead" target="Netzklassen.Server" relationship="GENERALIZATION">
+      <point x="103.5" y="-82.5" />
+      <point x="2154.988934993085" y="1645.0" />
+      <point x="2819.375" y="1645.0" />
+      <point x="2819.375" y="1406.0" />
+      <point x="2704.125" y="1406.0" />
+      <point x="93.75" y="160.0" />
+    </edge>
+    <edge source="game.client.ClientGame" target="game.client.ClientHead" relationship="TO_ONE">
+      <point x="-60.33333333333337" y="82.5" />
+      <point x="556.1395228215786" y="1386.0" />
+      <point x="120.72285615491182" y="1386.0" />
+      <point x="120.72285615491182" y="1406.0" />
+      <point x="363.4728561549118" y="1406.0" />
+      <point x="-25.0" y="-38.5" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientGame" relationship="TO_ONE">
+      <point x="-25.0" y="-38.5" />
+      <point x="363.4728561549118" y="1406.0" />
+      <point x="120.72285615491182" y="1406.0" />
+      <point x="120.72285615491182" y="1386.0" />
+      <point x="556.1395228215786" y="1386.0" />
+      <point x="-60.333333333333314" y="82.5" />
+    </edge>
+    <edge source="game.client.ClientErgebnis" target="game.client.ClientGUI" relationship="DEPENDENCY">
+      <point x="0.0" y="-60.5" />
+      <point x="443.98893499308474" y="1863.0" />
+      <point x="487.53215767635015" y="1863.0" />
+      <point x="0.0" y="72.0" />
+    </edge>
+    <edge source="Listenklassen.Queue.QueueNode" target="Listenklassen.Queue" relationship="INNER_CLASS">
+      <point x="64.0" y="-61.0" />
+      <point x="163.5" y="2229.0" />
+      <point x="165.83333333333331" y="2229.0" />
+      <point x="66.33333333333331" y="72.0" />
+    </edge>
+    <edge source="Datenbankklassen.DatabaseConnector" target="Datenbankklassen.Queue" relationship="CREATE">
+      <point x="81.5" y="-83.5" />
+      <point x="2327.472856154912" y="435.0" />
+      <point x="2250.972856154912" y="435.0" />
+      <point x="2250.972856154912" y="425.0" />
+      <point x="2348.65715767635" y="425.0" />
+      <point x="0.0" y="72.0" />
+    </edge>
+    <edge source="Netzklassen.Client.MessageHandler" target="Netzklassen.Client.MessageHandler.SocketWrapper" relationship="CREATE">
+      <point x="-66.33333333333326" y="-60.5" />
+      <point x="168.13952282157857" y="147.0" />
+      <point x="217.70833333333348" y="147.0" />
+      <point x="-63.66666666666663" y="60.5" />
+    </edge>
+    <edge source="game.server.ServerLogin" target="game.server.ServerHead" relationship="DEPENDENCY">
+      <point x="-98.0" y="50.0" />
+      <point x="1760.5978561549118" y="1635.0" />
+      <point x="1186.488934993085" y="1635.0" />
+      <point x="1186.488934993085" y="1655.0" />
+      <point x="1947.988934993085" y="1655.0" />
+      <point x="-103.5" y="-82.5" />
+    </edge>
+    <edge source="game.client.ClientErgebnis" target="game.client.ClientHead" relationship="DEPENDENCY">
+      <point x="0.0" y="-60.5" />
+      <point x="443.98893499308474" y="1863.0" />
+      <point x="333.2228561549118" y="1863.0" />
+      <point x="333.2228561549118" y="1645.0" />
+      <point x="388.47285615491194" y="1645.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="game.server.ServerHead" target="game.server.ServerErgebnis" relationship="TO_ONE">
+      <point x="34.5" y="-82.5" />
+      <point x="2085.988934993085" y="1655.0" />
+      <point x="2400.738934993085" y="1655.0" />
+      <point x="2400.738934993085" y="1615.0" />
+      <point x="1308.9728561549118" y="1615.0" />
+      <point x="98.0" y="49.5" />
+    </edge>
+    <edge source="game.server.ServerErgebnis" target="game.server.ServerHead" relationship="TO_ONE">
+      <point x="98.0" y="49.5" />
+      <point x="1308.9728561549118" y="1615.0" />
+      <point x="2400.738934993085" y="1615.0" />
+      <point x="2400.738934993085" y="1655.0" />
+      <point x="2085.988934993085" y="1655.0" />
+      <point x="34.5" y="-82.5" />
+    </edge>
+    <edge source="Netzklassen.Server" target="Netzklassen.Server.ClientMessageHandler" relationship="CREATE">
+      <point x="-46.87500000000006" y="-160.0" />
+      <point x="2563.5" y="922.0" />
+      <point x="2828.875" y="922.0" />
+      <point x="2828.875" y="862.0" />
+      <point x="2993.0034578146633" y="862.0" />
+      <point x="-71.33333333333333" y="83.0" />
+    </edge>
+    <edge source="Netzklassen.Server.NewConnectionHandler" target="Netzklassen.Server" relationship="INNER_CLASS">
+      <point x="26.25" y="49.5" />
+      <point x="2858.586791147997" y="852.0" />
+      <point x="2974.53215767635" y="852.0" />
+      <point x="2974.53215767635" y="912.0" />
+      <point x="2657.25" y="912.0" />
+      <point x="46.875" y="-160.0" />
+    </edge>
+    <edge source="Netzklassen.Server.ClientMessageHandler" target="Netzklassen.Server" relationship="INNER_CLASS">
+      <point x="0.0" y="83.0" />
+      <point x="3064.336791147997" y="852.0" />
+      <point x="2974.53215767635" y="852.0" />
+      <point x="2974.53215767635" y="912.0" />
+      <point x="2657.25" y="912.0" />
+      <point x="46.875" y="-160.0" />
+    </edge>
+    <edge source="game.server.SortLists" target="Listenklassen.List" relationship="DEPENDENCY">
+      <point x="0.0" y="-71.5" />
+      <point x="1220.75" y="922.0" />
+      <point x="1309.1796334716466" y="922.0" />
+      <point x="1309.1796334716466" y="862.0" />
+      <point x="1221.9728561549118" y="862.0" />
+      <point x="0.0" y="149.0" />
+    </edge>
+    <edge source="game.server.ServerErgebnis" target="game.server.Spieler" relationship="DEPENDENCY">
+      <point x="0.0" y="-49.5" />
+      <point x="1210.9728561549118" y="1366.0" />
+      <point x="1382.0978561549118" y="1366.0" />
+      <point x="1382.0978561549118" y="952.0" />
+      <point x="1528.8478561549118" y="952.0" />
+      <point x="1528.8478561549118" y="842.0" />
+      <point x="1734.5978561549118" y="842.0" />
+      <point x="-40.25" y="182.0" />
+    </edge>
+    <edge source="Netzklassen.Server.ClientMessageHandler" target="Netzklassen.Server.ClientMessageHandler.ClientSocketWrapper" relationship="CREATE">
+      <point x="1.4210854715202004E-14" y="-83.0" />
+      <point x="3064.336791147997" y="435.0" />
+      <point x="3000.972856154912" y="435.0" />
+      <point x="1.4210854715202004E-14" y="83.0" />
+    </edge>
+    <edge source="game.server.ServerHead" target="game.server.ServerErgebnis" relationship="CREATE">
+      <point x="-34.5" y="-82.5" />
+      <point x="2016.988934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1625.0" />
+      <point x="1210.9728561549118" y="1625.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="Listenklassen.Stack" target="Listenklassen.Stack.StackNode" relationship="TO_ONE">
+      <point x="-63.66666666666663" y="72.0" />
+      <point x="275.83333333333337" y="2229.0" />
+      <point x="277.83333333333337" y="2229.0" />
+      <point x="-61.66666666666663" y="-61.0" />
+    </edge>
+    <edge source="game.client.ClientHead" target="Netzklassen.Client" relationship="GENERALIZATION">
+      <point x="-75.0" y="-38.5" />
+      <point x="313.4728561549118" y="1396.0" />
+      <point x="22.0" y="1396.0" />
+      <point x="22.0" y="872.0" />
+      <point x="184.47285615491182" y="872.0" />
+      <point x="-50.0" y="72.0" />
+    </edge>
+    <edge source="Netzklassen.Server" target="Listenklassen.List" relationship="CREATE">
+      <point x="-46.87500000000006" y="-160.0" />
+      <point x="2563.5" y="922.0" />
+      <point x="2828.875" y="922.0" />
+      <point x="2828.875" y="872.0" />
+      <point x="1068.4296334716466" y="872.0" />
+      <point x="1068.4296334716466" y="862.0" />
+      <point x="1148.3061894882453" y="862.0" />
+      <point x="-73.66666666666674" y="149.0" />
+    </edge>
+    <edge source="Netzklassen.Server.ClientMessageHandler" target="Netzklassen.Server" relationship="DEPENDENCY">
+      <point x="71.33333333333326" y="83.0" />
+      <point x="3135.6701244813303" y="842.0" />
+      <point x="3074.63796680498" y="842.0" />
+      <point x="3074.63796680498" y="902.0" />
+      <point x="2751.0" y="902.0" />
+      <point x="140.625" y="-160.0" />
+    </edge>
+    <edge source="game.client.ClientErgebnis" target="Netzklassen.Client" relationship="DEPENDENCY">
+      <point x="0.0" y="-60.5" />
+      <point x="443.98893499308474" y="1863.0" />
+      <point x="11.0" y="1863.0" />
+      <point x="11.0" y="882.0" />
+      <point x="295.4728561549118" y="882.0" />
+      <point x="295.4728561549118" y="852.0" />
+      <point x="284.4728561549118" y="852.0" />
+      <point x="50.0" y="72.0" />
+    </edge>
+    <edge source="game.server.ServerLogin" target="game.PROTOKOLL" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.0" />
+      <point x="1858.5978561549118" y="962.0" />
+      <point x="925.4728561549119" y="962.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="game.server.ServerErgebnis" target="game.server.SortLists" relationship="DEPENDENCY">
+      <point x="0.0" y="-49.5" />
+      <point x="1210.9728561549118" y="1366.0" />
+      <point x="1220.75" y="1366.0" />
+      <point x="0.0" y="71.5" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientLogin" relationship="TO_ONE">
+      <point x="-25.0" y="-38.5" />
+      <point x="363.4728561549118" y="1406.0" />
+      <point x="120.72285615491182" y="1406.0" />
+      <point x="120.72285615491182" y="1386.0" />
+      <point x="107.13952282157857" y="1386.0" />
+      <point x="-74.33333333333326" y="71.5" />
+    </edge>
+    <edge source="game.client.ClientLogin" target="game.client.ClientHead" relationship="TO_ONE">
+      <point x="-74.33333333333326" y="71.5" />
+      <point x="107.13952282157857" y="1386.0" />
+      <point x="120.72285615491182" y="1386.0" />
+      <point x="120.72285615491182" y="1406.0" />
+      <point x="363.4728561549118" y="1406.0" />
+      <point x="-25.0" y="-38.5" />
+    </edge>
+    <edge source="Netzklassen.Client" target="Netzklassen.Client.MessageHandler" relationship="TO_ONE">
+      <point x="-75.0" y="-72.0" />
+      <point x="-74.625" y="60.5" />
+    </edge>
+    <edge source="game.server.ServerHead" target="game.server.ServerLogin" relationship="TO_ONE">
+      <point x="34.5" y="-82.5" />
+      <point x="2085.988934993085" y="1655.0" />
+      <point x="2400.738934993085" y="1655.0" />
+      <point x="2400.738934993085" y="1615.0" />
+      <point x="1956.5978561549118" y="1615.0" />
+      <point x="98.0" y="50.0" />
+    </edge>
+    <edge source="game.server.ServerLogin" target="game.server.ServerHead" relationship="TO_ONE">
+      <point x="98.0" y="50.0" />
+      <point x="1956.5978561549118" y="1615.0" />
+      <point x="2400.738934993085" y="1615.0" />
+      <point x="2400.738934993085" y="1655.0" />
+      <point x="2085.988934993085" y="1655.0" />
+      <point x="34.5" y="-82.5" />
+    </edge>
+    <edge source="Netzklassen.Server" target="Netzklassen.Server.NewConnectionHandler" relationship="CREATE">
+      <point x="-46.87500000000006" y="-160.0" />
+      <point x="2563.5" y="922.0" />
+      <point x="2828.875" y="922.0" />
+      <point x="2828.875" y="862.0" />
+      <point x="2806.086791147997" y="862.0" />
+      <point x="-26.25" y="49.5" />
+    </edge>
+    <edge source="game.server.ServerHead" target="game.server.ServerLobby" relationship="CREATE">
+      <point x="-34.5" y="-82.5" />
+      <point x="2016.988934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1645.0" />
+      <point x="1633.488934993085" y="1625.0" />
+      <point x="1544.5978561549118" y="1625.0" />
+      <point x="0.0" y="82.5" />
+    </edge>
+    <edge source="game.server.ServerLobby" target="game.server.Spieler" relationship="DEPENDENCY">
+      <point x="0.0" y="-82.5" />
+      <point x="1544.5978561549118" y="1366.0" />
+      <point x="1534.3478561549118" y="1366.0" />
+      <point x="1534.3478561549118" y="952.0" />
+      <point x="1528.8478561549118" y="952.0" />
+      <point x="1528.8478561549118" y="842.0" />
+      <point x="1734.5978561549118" y="842.0" />
+      <point x="-40.25" y="182.0" />
+    </edge>
+    <edge source="Datenbankklassen.DatabaseConnector" target="Datenbankklassen.QueryResult" relationship="TO_ONE">
+      <point x="-81.5" y="-83.5" />
+      <point x="2164.472856154912" y="435.0" />
+      <point x="2098.65715767635" y="435.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="Datenbankklassen.Queue" target="Datenbankklassen.Queue.QueueNode" relationship="TO_ONE">
+      <point x="0.0" y="-72.0" />
+      <point x="2348.65715767635" y="147.0" />
+      <point x="2349.823824343017" y="147.0" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="game.server.ServerLogin" target="game.server.SQLiteConnector" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.0" />
+      <point x="1858.5978561549118" y="1366.0" />
+      <point x="1597.5867911479968" y="1366.0" />
+      <point x="1597.5867911479968" y="1346.0" />
+      <point x="2172.875" y="1346.0" />
+      <point x="-92.0" y="94.0" />
+    </edge>
+    <edge source="Netzklassen.Server.ClientMessageHandler.ClientSocketWrapper" target="Netzklassen.Server.ClientMessageHandler" relationship="INNER_CLASS">
+      <point x="68.66666666666674" y="83.0" />
+      <point x="3069.639522821579" y="435.0" />
+      <point x="3135.6701244813303" y="435.0" />
+      <point x="71.33333333333326" y="-83.0" />
+    </edge>
+    <edge source="game.client.ClientLobby" target="game.PROTOKOLL" relationship="DEPENDENCY">
+      <point x="0.0" y="-61.0" />
+      <point x="409.47285615491194" y="912.0" />
+      <point x="925.4728561549119" y="912.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.PROTOKOLL" relationship="DEPENDENCY">
+      <point x="75.0" y="-38.5" />
+      <point x="463.4728561549118" y="1406.0" />
+      <point x="656.0833333333334" y="1406.0" />
+      <point x="656.0833333333334" y="1366.0" />
+      <point x="717.4728561549119" y="1366.0" />
+      <point x="717.4728561549119" y="962.0" />
+      <point x="925.4728561549119" y="962.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="game.client.ClientGame" target="game.client.ClientHead" relationship="DEPENDENCY">
+      <point x="60.33333333333337" y="82.5" />
+      <point x="676.8061894882453" y="1356.0" />
+      <point x="766.7228561549119" y="1356.0" />
+      <point x="766.7228561549119" y="1396.0" />
+      <point x="656.0833333333334" y="1396.0" />
+      <point x="656.0833333333334" y="1406.0" />
+      <point x="463.4728561549118" y="1406.0" />
+      <point x="75.0" y="-38.5" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientLobby" relationship="CREATE">
+      <point x="25.0" y="-38.5" />
+      <point x="413.4728561549118" y="1406.0" />
+      <point x="398.97285615491194" y="1406.0" />
+      <point x="398.97285615491194" y="1376.0" />
+      <point x="409.4728561549118" y="1376.0" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="Netzklassen.Server" target="Netzklassen.Server.NewConnectionHandler" relationship="TO_ONE">
+      <point x="-140.62500000000006" y="-160.0" />
+      <point x="2469.75" y="932.0" />
+      <point x="2818.875" y="932.0" />
+      <point x="2818.875" y="882.0" />
+      <point x="2753.586791147997" y="882.0" />
+      <point x="-78.75" y="49.5" />
+    </edge>
+    <edge source="Datenbankklassen.Queue" target="Datenbankklassen.Queue.QueueNode" relationship="CREATE">
+      <point x="66.33333333333331" y="-72.0" />
+      <point x="2414.9904910096834" y="147.0" />
+      <point x="2413.823824343017" y="147.0" />
+      <point x="64.0" y="61.0" />
+    </edge>
+    <edge source="Datenbankklassen.DatabaseConnector" target="Datenbankklassen.QueryResult" relationship="CREATE">
+      <point x="81.5" y="-83.5" />
+      <point x="2327.472856154912" y="435.0" />
+      <point x="2250.972856154912" y="435.0" />
+      <point x="2250.972856154912" y="425.0" />
+      <point x="2185.65715767635" y="425.0" />
+      <point x="87.0" y="116.0" />
+    </edge>
+    <edge source="game.client.ClientGame" target="game.PROTOKOLL" relationship="DEPENDENCY">
+      <point x="-60.33333333333337" y="-82.5" />
+      <point x="556.1395228215786" y="972.0" />
+      <point x="497.08333333333326" y="972.0" />
+      <point x="497.08333333333326" y="922.0" />
+      <point x="925.4728561549119" y="922.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="Netzklassen.Client.MessageHandler" target="Netzklassen.Client.MessageHandler.SocketWrapper" relationship="TO_ONE">
+      <point x="66.33333333333337" y="-60.5" />
+      <point x="300.8061894882453" y="147.0" />
+      <point x="345.0416666666665" y="147.0" />
+      <point x="63.66666666666663" y="60.5" />
+    </edge>
+    <edge source="game.client.ClientLobby" target="game.client.ClientHead" relationship="DEPENDENCY">
+      <point x="64.33333333333326" y="61.0" />
+      <point x="473.8061894882451" y="1366.0" />
+      <point x="656.0833333333334" y="1366.0" />
+      <point x="656.0833333333334" y="1406.0" />
+      <point x="463.4728561549118" y="1406.0" />
+      <point x="75.0" y="-38.5" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientGame" relationship="CREATE">
+      <point x="25.0" y="-38.5" />
+      <point x="413.4728561549118" y="1406.0" />
+      <point x="398.97285615491194" y="1406.0" />
+      <point x="398.97285615491194" y="1376.0" />
+      <point x="616.4728561549119" y="1376.0" />
+      <point x="0.0" y="82.5" />
+    </edge>
+    <edge source="Listenklassen.List" target="Listenklassen.List.ListNode" relationship="TO_ONE">
+      <point x="0.0" y="-149.0" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="game.server.ServerLobby" target="game.server.ServerHead" relationship="DEPENDENCY">
+      <point x="-98.0" y="82.5" />
+      <point x="1446.5978561549118" y="1635.0" />
+      <point x="1186.488934993085" y="1635.0" />
+      <point x="1186.488934993085" y="1655.0" />
+      <point x="1947.988934993085" y="1655.0" />
+      <point x="-103.5" y="-82.5" />
+    </edge>
+    <edge source="game.server.ServerErgebnis" target="Netzklassen.Server" relationship="DEPENDENCY">
+      <point x="0.0" y="-49.5" />
+      <point x="1210.9728561549118" y="1396.0" />
+      <point x="1607.5867911479968" y="1396.0" />
+      <point x="1607.5867911479968" y="1336.0" />
+      <point x="2516.625" y="1336.0" />
+      <point x="-93.75" y="160.0" />
+    </edge>
+    <edge source="game.server.SQLiteConnector" target="Datenbankklassen.DatabaseConnector" relationship="CREATE">
+      <point x="0.0" y="-94.0" />
+      <point x="2264.875" y="922.0" />
+      <point x="2164.472856154912" y="922.0" />
+      <point x="-81.5" y="83.5" />
+    </edge>
+    <edge source="game.client.ClientLobby" target="Netzklassen.Client" relationship="DEPENDENCY">
+      <point x="0.0" y="-61.0" />
+      <point x="409.47285615491194" y="872.0" />
+      <point x="295.4728561549118" y="872.0" />
+      <point x="295.4728561549118" y="852.0" />
+      <point x="284.4728561549118" y="852.0" />
+      <point x="50.0" y="72.0" />
+    </edge>
+    <edge source="Netzklassen.Client.MessageHandler" target="Netzklassen.Client" relationship="DEPENDENCY">
+      <point x="74.625" y="60.5" />
+      <point x="75.0" y="-72.0" />
+    </edge>
+    <edge source="Listenklassen.Queue" target="Listenklassen.Queue.QueueNode" relationship="TO_ONE">
+      <point x="-1.4210854715202004E-14" y="72.0" />
+      <point x="0.0" y="-61.0" />
+    </edge>
+    <edge source="game.client.ClientGame" target="Listenklassen.List" relationship="TO_ONE">
+      <point x="60.333333333333314" y="-82.5" />
+      <point x="676.8061894882453" y="942.0" />
+      <point x="2743.472856154912" y="942.0" />
+      <point x="2743.472856154912" y="852.0" />
+      <point x="1295.6395228215788" y="852.0" />
+      <point x="73.66666666666674" y="149.0" />
+    </edge>
+    <edge source="game.server.SQLiteConnector" target="Datenbankklassen.QueryResult" relationship="DEPENDENCY">
+      <point x="-92.0" y="-94.0" />
+      <point x="2172.875" y="932.0" />
+      <point x="2069.722856154912" y="932.0" />
+      <point x="2069.722856154912" y="435.0" />
+      <point x="2011.6571576763502" y="435.0" />
+      <point x="-87.0" y="116.0" />
+    </edge>
+    <edge source="game.client.ClientGame" target="Netzklassen.Client" relationship="DEPENDENCY">
+      <point x="-60.33333333333337" y="-82.5" />
+      <point x="556.1395228215786" y="972.0" />
+      <point x="497.08333333333326" y="972.0" />
+      <point x="497.08333333333326" y="862.0" />
+      <point x="295.4728561549118" y="862.0" />
+      <point x="295.4728561549118" y="852.0" />
+      <point x="284.4728561549118" y="852.0" />
+      <point x="50.0" y="72.0" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientGUI" relationship="CREATE">
+      <point x="66.66666666666674" y="38.5" />
+      <point x="455.13952282157857" y="1625.0" />
+      <point x="840.4728561549119" y="1625.0" />
+      <point x="840.4728561549119" y="1655.0" />
+      <point x="552.5321576763502" y="1655.0" />
+      <point x="65.0" y="-72.0" />
+    </edge>
+    <edge source="game.server.ServerHead" target="Listenklassen.List" relationship="TO_ONE">
+      <point x="34.5" y="-82.5" />
+      <point x="2085.988934993085" y="1655.0" />
+      <point x="2400.738934993085" y="1655.0" />
+      <point x="2400.738934993085" y="1615.0" />
+      <point x="2808.375" y="1615.0" />
+      <point x="2808.375" y="942.0" />
+      <point x="2743.472856154912" y="942.0" />
+      <point x="2743.472856154912" y="852.0" />
+      <point x="1295.6395228215788" y="852.0" />
+      <point x="73.66666666666674" y="149.0" />
+    </edge>
+    <edge source="game.server.ServerLobby" target="Netzklassen.Server" relationship="DEPENDENCY">
+      <point x="0.0" y="-82.5" />
+      <point x="1544.5978561549118" y="1406.0" />
+      <point x="1607.5867911479968" y="1406.0" />
+      <point x="1607.5867911479968" y="1336.0" />
+      <point x="2516.625" y="1336.0" />
+      <point x="-93.75" y="160.0" />
+    </edge>
+    <edge source="game.server.ServerErgebnis" target="game.server.SQLiteConnector" relationship="DEPENDENCY">
+      <point x="0.0" y="-49.5" />
+      <point x="1210.9728561549118" y="1376.0" />
+      <point x="1597.5867911479968" y="1376.0" />
+      <point x="1597.5867911479968" y="1346.0" />
+      <point x="2172.875" y="1346.0" />
+      <point x="-92.0" y="94.0" />
+    </edge>
+    <edge source="game.server.ServerErgebnis" target="game.PROTOKOLL" relationship="DEPENDENCY">
+      <point x="0.0" y="-49.5" />
+      <point x="1210.9728561549118" y="1366.0" />
+      <point x="1049.25" y="1366.0" />
+      <point x="1049.25" y="962.0" />
+      <point x="925.4728561549119" y="962.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="game.server.SortLists" target="game.server.Spieler" relationship="DEPENDENCY">
+      <point x="0.0" y="-71.5" />
+      <point x="1220.75" y="932.0" />
+      <point x="1528.8478561549118" y="932.0" />
+      <point x="1528.8478561549118" y="842.0" />
+      <point x="1734.5978561549118" y="842.0" />
+      <point x="-40.25" y="182.0" />
+    </edge>
+    <edge source="game.server.ServerMain" target="game.server.ServerHead" relationship="CREATE">
+      <point x="0.0" y="-38.5" />
+      <point x="0.0" y="82.5" />
+    </edge>
+    <edge source="game.server.ServerLogin" target="Netzklassen.Server" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.0" />
+      <point x="1858.5978561549118" y="1356.0" />
+      <point x="1607.5867911479968" y="1356.0" />
+      <point x="1607.5867911479968" y="1336.0" />
+      <point x="2516.625" y="1336.0" />
+      <point x="-93.75" y="160.0" />
+    </edge>
+    <edge source="game.client.ClientLogin" target="Netzklassen.Client" relationship="DEPENDENCY">
+      <point x="0.0" y="-71.5" />
+      <point x="181.47285615491182" y="892.0" />
+      <point x="295.4728561549118" y="892.0" />
+      <point x="295.4728561549118" y="852.0" />
+      <point x="284.4728561549118" y="852.0" />
+      <point x="50.0" y="72.0" />
+    </edge>
+    <edge source="Netzklassen.Client.MessageHandler.SocketWrapper" target="Netzklassen.Client.MessageHandler" relationship="INNER_CLASS">
+      <point x="0.0" y="60.5" />
+      <point x="281.375" y="147.0" />
+      <point x="234.47285615491182" y="147.0" />
+      <point x="0.0" y="-60.5" />
+    </edge>
+    <edge source="game.client.ClientGame" target="Listenklassen.List" relationship="CREATE">
+      <point x="0.0" y="-82.5" />
+      <point x="616.4728561549119" y="932.0" />
+      <point x="1068.4296334716466" y="932.0" />
+      <point x="1068.4296334716466" y="862.0" />
+      <point x="1148.3061894882453" y="862.0" />
+      <point x="-73.66666666666674" y="149.0" />
+    </edge>
+    <edge source="game.client.ClientMain" target="game.client.ClientHead" relationship="CREATE">
+      <point x="0.0" y="-38.5" />
+      <point x="840.4728561549119" y="1625.0" />
+      <point x="455.13952282157857" y="1625.0" />
+      <point x="66.66666666666674" y="38.5" />
+    </edge>
+    <edge source="Netzklassen.Client" target="Netzklassen.Client.MessageHandler" relationship="CREATE">
+      <point x="25.0" y="-72.0" />
+      <point x="24.875" y="60.5" />
+    </edge>
+    <edge source="Listenklassen.Stack.StackNode" target="Listenklassen.Stack" relationship="INNER_CLASS">
+      <point x="61.66666666666663" y="-61.0" />
+      <point x="401.16666666666663" y="2229.0" />
+      <point x="403.16666666666663" y="2229.0" />
+      <point x="63.66666666666663" y="72.0" />
+    </edge>
+    <edge source="game.client.ClientLogin" target="game.PROTOKOLL" relationship="DEPENDENCY">
+      <point x="0.0" y="-71.5" />
+      <point x="181.47285615491182" y="902.0" />
+      <point x="925.4728561549119" y="902.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="game.client.ClientGUI" target="game.client.ClientHead" relationship="DEPENDENCY">
+      <point x="0.0" y="-72.0" />
+      <point x="487.53215767635015" y="1655.0" />
+      <point x="515.0321576763502" y="1655.0" />
+      <point x="515.0321576763502" y="1635.0" />
+      <point x="388.47285615491194" y="1635.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="game.server.ServerErgebnis" target="game.server.ServerHead" relationship="DEPENDENCY">
+      <point x="-98.0" y="49.5" />
+      <point x="1112.9728561549118" y="1635.0" />
+      <point x="1186.488934993085" y="1635.0" />
+      <point x="1186.488934993085" y="1655.0" />
+      <point x="1947.988934993085" y="1655.0" />
+      <point x="-103.5" y="-82.5" />
+    </edge>
+    <edge source="game.client.ClientErgebnis" target="game.client.ClientHead" relationship="TO_ONE">
+      <point x="-66.0" y="-60.5" />
+      <point x="377.98893499308474" y="1873.0" />
+      <point x="0.0" y="1873.0" />
+      <point x="0.0" y="1655.0" />
+      <point x="349.7228561549118" y="1655.0" />
+      <point x="349.7228561549118" y="1635.0" />
+      <point x="321.8061894882451" y="1635.0" />
+      <point x="-66.66666666666674" y="38.5" />
+    </edge>
+    <edge source="game.server.ServerLogin" target="game.server.Spieler" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.0" />
+      <point x="1858.5978561549118" y="1406.0" />
+      <point x="1951.0546334716466" y="1406.0" />
+      <point x="1951.0546334716466" y="952.0" />
+      <point x="1528.8478561549118" y="952.0" />
+      <point x="1528.8478561549118" y="842.0" />
+      <point x="1734.5978561549118" y="842.0" />
+      <point x="-40.25" y="182.0" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientErgebnis" relationship="TO_ONE">
+      <point x="-66.66666666666674" y="38.5" />
+      <point x="321.8061894882451" y="1635.0" />
+      <point x="349.7228561549118" y="1635.0" />
+      <point x="349.7228561549118" y="1655.0" />
+      <point x="0.0" y="1655.0" />
+      <point x="0.0" y="1873.0" />
+      <point x="377.98893499308474" y="1873.0" />
+      <point x="-66.0" y="-60.5" />
+    </edge>
+    <edge source="game.server.ServerHead" target="game.server.SQLiteConnector" relationship="TO_ONE">
+      <point x="34.5" y="-82.5" />
+      <point x="2085.988934993085" y="1655.0" />
+      <point x="2400.738934993085" y="1655.0" />
+      <point x="2400.988934993085" y="1406.0" />
+      <point x="2356.875" y="1406.0" />
+      <point x="92.0" y="94.0" />
+    </edge>
+    <edge source="game.client.ClientGUI" target="game.client.ClientGame" relationship="DEPENDENCY">
+      <point x="0.0" y="-72.0" />
+      <point x="487.53215767635015" y="1655.0" />
+      <point x="515.0321576763502" y="1655.0" />
+      <point x="515.0321576763502" y="1645.0" />
+      <point x="766.7228561549119" y="1645.0" />
+      <point x="766.7228561549119" y="1356.0" />
+      <point x="676.8061894882453" y="1356.0" />
+      <point x="60.33333333333337" y="82.5" />
+    </edge>
+    <edge source="game.client.ClientGame" target="game.client.ClientGUI" relationship="DEPENDENCY">
+      <point x="60.33333333333337" y="82.5" />
+      <point x="676.8061894882453" y="1356.0" />
+      <point x="766.7228561549119" y="1356.0" />
+      <point x="766.7228561549119" y="1645.0" />
+      <point x="515.0321576763502" y="1645.0" />
+      <point x="515.0321576763502" y="1655.0" />
+      <point x="487.53215767635015" y="1655.0" />
+      <point x="0.0" y="-72.0" />
+    </edge>
+    <edge source="game.server.ServerErgebnis" target="Listenklassen.List" relationship="DEPENDENCY">
+      <point x="0.0" y="-49.5" />
+      <point x="1210.9728561549118" y="1366.0" />
+      <point x="1071.25" y="1366.0" />
+      <point x="1071.25" y="972.0" />
+      <point x="1309.1796334716466" y="972.0" />
+      <point x="1309.1796334716466" y="862.0" />
+      <point x="1221.9728561549118" y="862.0" />
+      <point x="0.0" y="149.0" />
+    </edge>
+    <edge source="Datenbankklassen.Queue.QueueNode" target="Datenbankklassen.Queue" relationship="INNER_CLASS">
+      <point x="-64.0" y="61.0" />
+      <point x="2285.823824343017" y="147.0" />
+      <point x="2282.323824343017" y="147.0" />
+      <point x="-66.33333333333326" y="-72.0" />
+    </edge>
+    <edge source="Listenklassen.Stack" target="Listenklassen.Stack.StackNode" relationship="CREATE">
+      <point x="0.0" y="72.0" />
+      <point x="0.0" y="-61.0" />
+    </edge>
+    <edge source="game.client.ClientHead" target="game.client.ClientLogin" relationship="CREATE">
+      <point x="25.0" y="-38.5" />
+      <point x="413.4728561549118" y="1406.0" />
+      <point x="398.97285615491194" y="1406.0" />
+      <point x="398.97285615491194" y="1376.0" />
+      <point x="181.47285615491182" y="1376.0" />
+      <point x="0.0" y="71.5" />
+    </edge>
+    <edge source="Netzklassen.Server.ClientMessageHandler" target="Netzklassen.Server.ClientMessageHandler.ClientSocketWrapper" relationship="TO_ONE">
+      <point x="-71.33333333333331" y="-83.0" />
+      <point x="2993.0034578146633" y="435.0" />
+      <point x="2932.306189488245" y="435.0" />
+      <point x="-68.66666666666667" y="83.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.36602671118530894" showDependencies="true" x="1404.5813531194071" y="1190.0517934945747" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

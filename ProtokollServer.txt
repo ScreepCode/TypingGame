@@ -1,0 +1,46 @@
+ANMELDE PHASE
+- Nach der Anmeldung eines neuen Clients bekommt dieser eine Nachricht geschickt
+    -> "N#Willkommen bei meinem Spiel. Bitte wähle deinen Account aus"
+
+- Sendet eine Highscoreliste an den eingeloggten User
+    -> "HSL#<<<Username>:<Passwort>>;<<Username>:<Passwort>>...>"
+
+LOGIN PHASE
+- Wenn die Account Erstellung fehlschlägt, bekommt der Nutzer gegebenfalls direktes Feedback
+    - Nutzername existiert bereits: -> "LS#Failed: Nutzername existiert bereits"
+    - Unbekannter Fehler: -> "LS#Failed: Unbekannter Fehler aufgetreten"
+- Wenn die Account Erstellung gelingt, bekommt der Client eine Erfolgsmeldung, um in die Lobbyphase zu kommen
+    -> "LS#Success:<Username>"
+
+- Wenn der Client Guest gesendet hat, wird ihm eine Erfolgsmeldung gesendet, um Lobbyphase zu betreten
+    -> "LS#Success:<Username>"
+- Wenn die User-Passwort-Überprüfung gelingt, wir eine Erfolgsmeldung inkl. Nutzernamen zurück gegeben
+    -> "LS#Success:<Username>"
+- Wenn die User-Passwort-Überprüfung nicht gelingt, wir eine Fehlermeldung zurück gegeben
+    -> "LS#Failed: Die Daten passen nicht zusammen"
+
+
+LOBBY PHASE
+- Der Server überprüft nach Jedem Lobbybeitritt, ob die Anforderungen für einen Spielstart erfüllt sind und sendet dafür an jeden Clienten eine Nachricht:
+    - Wenn erfüllt, dann sendet er ein Start: -> "LOBSTAT#START"
+    - Wenn nicht, dann alle die Verteilung Bereit/NichtBereit: -> "LOBSTAT#<readyMember>/<lobbyMember>"
+
+- Anschließend wird die Lobbyliste mit allen eingeloggten Teilnehmern gesendet
+    -> "WL#<<<Username>:<Highscore>:<ifReady>>;<<Username>:<Highscore>:<ifReady>>...>"
+
+- Nachdem der Server eine Bereit-Meldung vom Clienten bekam, sendet der Server an alle die aktuallisierte Lobbyliste und Bereitstatus
+    - Nicht erfüllt: -> "LOBSTAT#<readyMember>/<lobbyMember>"
+    - Erfüllt: -> "LOBSTAT#START"
+    - Lobbyliste: -> -> "WL#<<<Username>:<Highscore>:<ifReady>>;<<Username>:<Highscore>:<ifReady>>...>"
+
+
+GAME PHASE
+
+
+
+ERGEBNIS PHASE
+- Nach erhalten der Rohdaten, werden die Clientspezifischen Ergebnisse berechnet und dem Clienten zurückgesendet
+    -> "OR#<AnzahlAnschläge>:<AnschlägeProMinute>:<Fehler>:<Rechnung>:<Punktzahl>:<IfHighscore>"
+
+- Nach jeder Clientmeldung wird die Scoreliste an alle Clients gesendet
+    -> "RR#"

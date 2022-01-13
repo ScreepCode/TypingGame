@@ -1,0 +1,46 @@
+ANMELDE PHASE
+- Nachdem der Client gestartet wurde, verbindet er sich direkt mit dem Server.
+- Dieser sendet direkt anschließend eine Nachfrage, um die Highscore listen zu bekommen
+    -> "RHSL# "
+
+LOGIN PHASE
+- Nach klicken auf "Account erstellen", wird der Account mit Nickname und gehashdem Passwort gesendet
+    -> "ACC_ER#<Nickname>:<gehashtes Passwort>"
+- Nach klicken auf "Anmelden", wird der Account mit Nickname und gehashdem Passwort überprüft
+    -> "ACC_AN#<Nickname>:<gehashtes Passwort>"
+- Nach klicken auf "Als Gast anmelden", wird dem Server eine Anonyme Login Anfrage gesendet
+    -> "ACC_AN#Guest"
+
+
+
+
+
+
+
+
+
+
+LOBBY PHASE
+- Wenn der Loginstatus "Success" ist, wird eine Nachricht gesendet, dass der Client die Lobby betritt
+    -> "ENTLOB# "
+
+- Wenn der Button "Bereit" gedrückt wird, dann wird eine Meldung über den Bereitstatus an den Server gegeben
+    - Wenn bereit: -> "READY#1"
+    - Wenn nicht bereit: -> "READY#0"
+
+
+
+
+
+
+
+GAME PHASE
+- Nachdem das Spiel abgeschlossen wurde, werden automatisch die rohen Spieldaten an den Server gesendet
+    -> "ENDGAME#<Anschläge>:<FehlerCounter>"
+
+ERGEBNIS PHASE
+- Wenn der "Rekord hochladen" gedrückt wird (wenn der User seinen Highscore hat) dann wird dem Server gesagt, er soll die Daten hochladen
+    -> "SH#1"
+
+
+

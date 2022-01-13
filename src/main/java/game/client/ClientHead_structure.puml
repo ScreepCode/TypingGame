@@ -1,0 +1,323 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "game.client.ClientHead"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1225578732 { 
+   	label=Netzklassen
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Client1225578732[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Client</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   messageHandler: MessageHandler [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ processMessage(pMessage: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ send(pMessage: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1357712437 { 
+   	label=client
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   ClientErgebnis985441977[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientErgebnis</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   clientHead: ClientHead [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ show(daten: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateScoreList(data: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ uploadRecord()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ClientGUI985441977[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientGUI</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   btnRekordUpload: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   clientHead: ClientHead [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dTMHHSc: DefaultTableModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dTMLobby: DefaultTableModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dTMSc: DefaultTableModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   doc: StyledDocument [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   highscoreTable: JTable [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lblAnschlaege: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lblReadyCounter: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lblZeit: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lobbyTable: JTable [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panelErgebnis: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panelGame: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panelLobby: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   panelLogin: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   scoreTable: JTable [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   textFieldAnschlaege: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   textFieldAnschlaegePM: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   textFieldErgebnis: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   textFieldFehler: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   textFieldPassword: JPasswordField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   textFieldRechnung: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   txtpnText: JTextPane [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ keyPressed(e: KeyEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyReleased(arg0: KeyEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyTyped(e: KeyEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ClientGame985441977[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientGame</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   apm: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   clientHead: ClientHead [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   counter: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fehler: List&lt;Integer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gameCanStart: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gameRunning: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   taskZeit: TimerTask [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   text: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   textAsCharArr: char[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   threadAPM: Thread [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   timeLeft: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timerZeit: Timer [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- countFehler(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeLastChar()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startGame()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stopGame()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ typeChar(c: char)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ClientHead985441977[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientHead</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   ergebnis: ClientErgebnis [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   game: ClientGame [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   gui: ClientGUI [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lobby: ClientLobby [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   login: ClientLogin [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ processMessage(pMessage: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ClientLobby985441977[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientLobby</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   clientHead: ClientHead [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   readyStatus: Boolean [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ refreshCounter(data: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ClientLogin985441977[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientLogin</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   clientHead: ClientHead [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accCreation(name: String, password: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ accLogin(name: String, password: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ accLoginAsGuest()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateHighscoreList(data: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2021122027 { 
+   	label=Client
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   MessageHandler1824262957[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MessageHandler</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   active: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   socketWrapper: SocketWrapper [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ run()</TD></TR>
+<TR><TD ALIGN="LEFT" >- send(pMessage: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+subgraph cluster_300546502 { 
+   	label=MessageHandler
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   SocketWrapper889561668[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SocketWrapper</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   fromServer: BufferedReader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   socket: Socket [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toServer: PrintWriter [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ receive(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ send(pMessage: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+Client1225578732 -> ClientHead985441977[arrowhead=none, arrowtail=empty, dir=both];
+Client1225578732 -> MessageHandler1824262957[label="messageHandler
+[0..1]"];
+ClientErgebnis985441977 -> ClientHead985441977[label="clientHead
+[0..1]"];
+ClientGUI985441977 -> ClientHead985441977[label="clientHead
+[0..1]"];
+ClientGame985441977 -> ClientHead985441977[label="clientHead
+[0..1]"];
+ClientHead985441977 -> ClientErgebnis985441977[label="ergebnis
+[0..1]"];
+ClientHead985441977 -> ClientGUI985441977[label="gui
+[0..1]"];
+ClientHead985441977 -> ClientGame985441977[label="game
+[0..1]"];
+ClientHead985441977 -> ClientLobby985441977[label="lobby
+[0..1]"];
+ClientHead985441977 -> ClientLogin985441977[label="login
+[0..1]"];
+ClientLobby985441977 -> ClientHead985441977[label="clientHead
+[0..1]"];
+ClientLogin985441977 -> ClientHead985441977[label="clientHead
+[0..1]"];
+MessageHandler1824262957 -> SocketWrapper889561668[label="socketWrapper
+[0..1]"];
+    
+}
+@enduml

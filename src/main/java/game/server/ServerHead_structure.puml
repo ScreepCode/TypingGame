@@ -1,0 +1,351 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "game.server.ServerHead"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1225578732 { 
+   	label=Netzklassen
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Server1225578732[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Server</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   connectionHandler: NewConnectionHandler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   messageHandlers: List&lt;ClientMessageHandler&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addNewClientMessageHandler(pClientSocket: Socket)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ closeConnection(pClientIP: String, pClientPort: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- findClientMessageHandler(pClientIP: String, pClientPort: int): ClientMessageHandler</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isConnectedTo(pClientIP: String, pClientPort: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ processClosingConnection(pClientIP: String, pClientPort: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ processMessage(pClientIP: String, pClientPort: int, pMessage: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ processNewConnection(pClientIP: String, pClientPort: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- removeClientMessageHandler(pClientMessageHandler: ClientMessageHandler)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ send(pClientIP: String, pClientPort: int, pMessage: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ sendToAll(pMessage: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1821959325 { 
+   	label=Server
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   ClientMessageHandler2018818395[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientMessageHandler</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   active: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   socketWrapper: ClientSocketWrapper [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ run()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ send(pMessage: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NewConnectionHandler2018818395[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NewConnectionHandler</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   active: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   serverSocket: ServerSocket [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ run()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+subgraph cluster_1639132089 { 
+   	label=ClientMessageHandler
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   ClientSocketWrapper1530790473[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientSocketWrapper</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   clientSocket: Socket [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fromClient: BufferedReader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   toClient: PrintWriter [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ receive(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ send(pMessage: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_2036697502 { 
+   	label=Listenklassen
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   List2036697502[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)List&lt;ContentType&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   current: ListNode [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   first: ListNode [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   last: ListNode [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ append(pContent: ContentType)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ concat(pList: List&lt;ContentType&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- getPrevious(pNode: ListNode): ListNode</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insert(pContent: ContentType)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ next()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ remove()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toFirst()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toLast()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_905826493 { 
+   	label=server
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   SQLiteConnector533556033[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SQLiteConnector</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   con: DatabaseConnector [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ checkIfAccountnameExists(username: String): Boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createAccount(username: String, passwordHash: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getHighscore(username: String): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ passwordCheck(username: String, passwordHash: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveHighscore(username: String, highscore: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ServerErgebnis533556033[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ServerErgebnis</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   serverHead: ServerHead [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ nachrichtenVerwaltung(pClientIP: String, pClientPort: int, pMessage: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateScoreList()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ServerHead533556033[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ServerHead</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   connector: SQLiteConnector [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ergebnis: ServerErgebnis [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lobby: ServerLobby [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   login: ServerLogin [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   spieler: List&lt;Spieler&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ processClosingConnection(pClientIP: String, pClientPort: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ processMessage(pClientIP: String, pClientPort: int, pMessage: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ processNewConnection(pClientIP: String, pClientPort: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ spielerSuchen(pClientIP: String, pClientPort: int): Spieler</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ServerLobby533556033[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ServerLobby</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   serverHead: ServerHead [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addPlayerToLobby(spieler: Spieler)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkIfLobbyReady()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nachrichtenVerwaltung(pClientIP: String, pClientPort: int, pMessage: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removePlayerFromLobby()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ sendAllLobbyMembers()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ServerLogin533556033[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ServerLogin</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   serverHead: ServerHead [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ nachrichtenVerwaltung(pClientIP: String, pClientPort: int, pMessage: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Spieler533556033[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Spieler</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   highscore: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ipAdresse: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   joinedLobby: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nickName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   port: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   readyStatus: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   score: double [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+ClientMessageHandler2018818395 -> ClientSocketWrapper1530790473[label="socketWrapper
+[0..1]"];
+Server1225578732 -> ClientMessageHandler2018818395[label="messageHandlers
+[0..1]"];
+Server1225578732 -> List2036697502[label="messageHandlers
+[0..1]"];
+Server1225578732 -> NewConnectionHandler2018818395[label="connectionHandler
+[0..1]"];
+Server1225578732 -> ServerHead533556033[arrowhead=none, arrowtail=empty, dir=both];
+ServerErgebnis533556033 -> ServerHead533556033[label="serverHead
+[0..1]"];
+ServerHead533556033 -> List2036697502[label="spieler
+[0..1]"];
+ServerHead533556033 -> SQLiteConnector533556033[label="connector
+[0..1]"];
+ServerHead533556033 -> ServerErgebnis533556033[label="ergebnis
+[0..1]"];
+ServerHead533556033 -> ServerLobby533556033[label="lobby
+[0..1]"];
+ServerHead533556033 -> ServerLogin533556033[label="login
+[0..1]"];
+ServerHead533556033 -> Spieler533556033[label="spieler
+[0..1]"];
+ServerLobby533556033 -> ServerHead533556033[label="serverHead
+[0..1]"];
+ServerLogin533556033 -> ServerHead533556033[label="serverHead
+[0..1]"];
+    
+}
+@enduml
