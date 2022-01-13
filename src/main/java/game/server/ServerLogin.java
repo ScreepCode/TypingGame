@@ -33,7 +33,7 @@ public class ServerLogin {
                     } else {
                         serverHead.connector.createAccount(username, passwordHash);
                         tmpSpieler.setNickName(username);
-                        String antwort = SC_LOGINSTATUS + SEPARATOR + "Success";
+                        String antwort = SC_LOGINSTATUS + SEPARATOR + "Success:" + tmpSpieler.getNickName();
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                 } catch (Exception e) {
