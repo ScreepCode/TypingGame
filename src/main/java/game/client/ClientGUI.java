@@ -11,38 +11,37 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class ClientGUI extends JFrame implements KeyListener{
-	JPasswordField textFieldPassword;
-	JTextField textFieldAnschlaegePM;
-	JTextField textFieldFehler;
-	JTextField textFieldRechnung;
-	JTextField textFieldErgebnis;
-	JTextField textFieldAnschlaege;
+	protected JPasswordField textFieldPassword;
+	protected JTextField textFieldAnschlaegePM;
+	protected JTextField textFieldFehler;
+	protected JTextField textFieldRechnung;
+	protected JTextField textFieldErgebnis;
+	protected JTextField textFieldAnschlaege;
 
-	JPanel panelLogin;
-	JPanel panelLobby;
-	JPanel panelGame;
-	JPanel panelErgebnis;
+	private JPanel panelLogin;
+	private JPanel panelLobby;
+	private JPanel panelGame;
+	private JPanel panelErgebnis;
 
-	JLabel lblReadyCounter;
-	JLabel lblZeit;
-	JLabel lblAnschlaege;
+	protected JLabel lblReadyCounter;
+	protected JLabel lblZeit;
+	protected JLabel lblAnschlaege;
 
-	StyledDocument doc = new DefaultStyledDocument();
-	JTextPane txtpnText;
+	protected StyledDocument doc = new DefaultStyledDocument();
+	protected JTextPane txtpnText;
 
-	JButton btnRekordUpload;
+	protected JButton btnRekordUpload;
 
+	protected DefaultTableModel dTMHHSc = new DefaultTableModel();
+	protected JTable highscoreTable;
 
-	DefaultTableModel dTMHHSc = new DefaultTableModel();
-	JTable highscoreTable;
+	protected DefaultTableModel dTMSc = new DefaultTableModel();
+	protected JTable scoreTable;
 
-	DefaultTableModel dTMSc = new DefaultTableModel();
-	JTable scoreTable;
+	protected DefaultTableModel dTMLobby = new DefaultTableModel();
+	protected JTable lobbyTable;
 
-	DefaultTableModel dTMLobby = new DefaultTableModel();
-	JTable lobbyTable;
-
-	ClientHead clientHead;
+	private final ClientHead clientHead;
 
 	
 	public ClientGUI(ClientHead clientHead) {
@@ -51,8 +50,6 @@ public class ClientGUI extends JFrame implements KeyListener{
 
 		ImageIcon img = new ImageIcon("Icon.png");
 		setIconImage(img.getImage());
-
-
 
 		this.clientHead = clientHead;
 		

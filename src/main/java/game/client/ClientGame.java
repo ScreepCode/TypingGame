@@ -8,25 +8,24 @@ import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static game.PROTOKOLL.CS_ENDEDGAME;
-import static game.PROTOKOLL.SEPARATOR;
+import static game.PROTOKOLL.*;
 
 public class ClientGame{
 
-    ClientHead clientHead;
-    Boolean gameRunning = false;
-    Boolean gameCanStart = true;
-    Timer timerZeit = new Timer();
+    private final ClientHead clientHead;
+    private Boolean gameRunning = false;
+    private Boolean gameCanStart = true;
+    private Timer timerZeit = new Timer();
 
-    String text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
+    private String text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
     char[] textAsCharArr = text.toCharArray();
-    List<Integer> fehler = new List<>();
+    private List<Integer> fehler = new List<>();
 
     int counter = 0;
     double timeLeft = 120.0;
     double apm = 0;
 
-    TimerTask taskZeit = new TimerTask() {
+    private TimerTask taskZeit = new TimerTask() {
         @Override
         public void run() {
             if(timeLeft>=0){
@@ -39,7 +38,7 @@ public class ClientGame{
         }
     };
 
-    Thread threadAPM = new Thread(new Runnable() {
+    private Thread threadAPM = new Thread(new Runnable() {
         @Override
         public void run() {
             while(true){

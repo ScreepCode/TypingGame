@@ -6,7 +6,7 @@ import static game.PROTOKOLL.*;
 
 public class ServerLogin {
 
-    ServerHead serverHead;
+    private final ServerHead serverHead;
 
     public ServerLogin(ServerHead serverHead) {
         this.serverHead = serverHead;
@@ -16,9 +16,6 @@ public class ServerLogin {
         int posSep1 = pMessage.indexOf(SEPARATOR);
 		String prefix = pMessage.substring(0, posSep1);
         String daten =  pMessage.substring(posSep1+1);
-
-
-
 
         Spieler tmpSpieler = serverHead.spielerSuchen(pClientIP, pClientPort);
 
@@ -80,10 +77,6 @@ public class ServerLogin {
         for(String [] row : highscorelist){
             message += row[0] + ":" + row[1] + ";";
         }
-
         return message;
     }
-
-
-    
 }

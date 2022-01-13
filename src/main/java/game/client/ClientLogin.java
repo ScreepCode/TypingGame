@@ -7,13 +7,11 @@ import static game.PROTOKOLL.*;
 
 public class ClientLogin {
 
-    ClientHead clientHead;
+    private final ClientHead clientHead;
 
     public ClientLogin(ClientHead clientHead) {
         this.clientHead = clientHead;
-
     }
-    
 
     public void accLogin(String name, String password){
         try{

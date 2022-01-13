@@ -7,14 +7,12 @@ import static game.PROTOKOLL.*;
 
 public class ClientLobby {
 
-    ClientHead clientHead;
+    private final ClientHead clientHead;
 
-    Boolean readyStatus = false;
+    private Boolean readyStatus = false;
 
     public ClientLobby(ClientHead clientHead) {
         this.clientHead = clientHead;
-    
-    
     }
 
     public void refreshCounter(String data){

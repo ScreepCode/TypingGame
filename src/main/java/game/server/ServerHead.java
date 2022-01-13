@@ -7,12 +7,12 @@ import static game.PROTOKOLL.*;
 
 public class ServerHead extends Server{
 
-	List<Spieler> spieler = new List<>();
+	protected List<Spieler> spieler = new List<>();
 
-	SQLiteConnector connector = new SQLiteConnector("database.db");
-	ServerLogin login;
-	ServerLobby lobby;
-	ServerErgebnis ergebnis;
+	protected SQLiteConnector connector = new SQLiteConnector("database.db");
+	protected ServerLogin login;
+	protected ServerLobby lobby;
+	protected ServerErgebnis ergebnis;
 	
 	public ServerHead(int pPort) {
 		super(pPort);

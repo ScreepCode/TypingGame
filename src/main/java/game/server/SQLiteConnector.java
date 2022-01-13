@@ -4,11 +4,9 @@ import Datenbankklassen.*;
 
 public class SQLiteConnector{
 
-    DatabaseConnector con;
-    String dbName;
+    protected DatabaseConnector con;
 
     public SQLiteConnector(String dbName){
-        this.dbName = dbName;
         con = new DatabaseConnector("", 0, dbName, "", "");
     }
 

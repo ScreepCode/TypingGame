@@ -1,8 +1,8 @@
 package game.server;
 
 public class Spieler {
-	private String ipAdresse;
-	private int port; 
+	private final String ipAdresse;
+	private final int port;
 	private String nickName; 
 	private double highscore;
 	private double score;

@@ -6,7 +6,7 @@ import static game.PROTOKOLL.*;
 
 public class ServerErgebnis {
 
-    ServerHead serverHead;
+    private final ServerHead serverHead;
 
     public ServerErgebnis(ServerHead serverHead) {
         this.serverHead = serverHead;

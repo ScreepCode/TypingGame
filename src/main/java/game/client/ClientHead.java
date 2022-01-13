@@ -7,11 +7,11 @@ import static game.PROTOKOLL.*;
 
 public class ClientHead extends Client{
 
-	ClientGUI gui;
-	ClientLogin login;
-	ClientLobby lobby;
-	ClientGame game;
-	ClientErgebnis ergebnis;
+	protected ClientGUI gui;
+	protected ClientLogin login;
+	protected ClientLobby lobby;
+	protected ClientGame game;
+	protected ClientErgebnis ergebnis;
 
 	public ClientHead(String pServerIP, int pServerPort) {
 		super(pServerIP, pServerPort);
@@ -41,12 +41,10 @@ public class ClientHead extends Client{
 
 		switch (prefix) {
 
-//			###############LOGINPAGE#########################
 			case SC_HIGHSCORELIST -> {
 				login.updateHighscoreList(daten);
 			}
 			case SC_LOGINSTATUS -> {
-				// String [] data = daten[1].split(":");
 				if (daten.startsWith("Success")) {
 					gui.setTitle(gui.getTitle() + " --> " + daten.split(":")[1]);
 					gui.setPanelLayout("lobby");
@@ -73,7 +71,4 @@ public class ClientHead extends Client{
 			}
 		}
 	}
-	
-
-	
 }

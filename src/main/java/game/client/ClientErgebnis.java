@@ -4,7 +4,7 @@ import static game.PROTOKOLL.*;
 
 public class ClientErgebnis {
 
-    ClientHead clientHead;
+    private final ClientHead clientHead;
 
     public ClientErgebnis(ClientHead clientHead) {
         this.clientHead = clientHead;
