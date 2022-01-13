@@ -1,7 +1,8 @@
 package game.client;
 
-import game.PROTOKOLL;
 import Netzklassen.Client;
+
+import static game.PROTOKOLL.*;
 
 
 public class ClientHead extends Client{
@@ -28,46 +29,46 @@ public class ClientHead extends Client{
 		gui.setFocusable(true);
 		gui.addKeyListener(gui);
 
-		send(PROTOKOLL.CS_REQUESTHIGHSCORELIST + PROTOKOLL.SEPARATOR + " ");
+		send(CS_REQUESTHIGHSCORELIST + SEPARATOR + " ");
 	}
 
 	@Override
 	public void processMessage(String pMessage) {
 		System.out.println(pMessage);
-		int posSep1 = pMessage.indexOf(PROTOKOLL.SEPARATOR);
+		int posSep1 = pMessage.indexOf(SEPARATOR);
 		String prefix = pMessage.substring(0, posSep1);
 		String daten = pMessage.substring(posSep1+1);
 
 		switch (prefix) {
 
 //			###############LOGINPAGE#########################
-			case PROTOKOLL.SC_HIGHSCORELIST -> {
+			case SC_HIGHSCORELIST -> {
 				login.updateHighscoreList(daten);
 			}
-			case PROTOKOLL.SC_LOGINSTATUS -> {
+			case SC_LOGINSTATUS -> {
 				// String [] data = daten[1].split(":");
 				if (daten.startsWith("Success")) {
 					gui.setTitle(gui.getTitle() + " --> " + daten.split(":")[1]);
 					gui.setPanelLayout("lobby");
-					send(PROTOKOLL.CS_ENTERLOBBY + PROTOKOLL.SEPARATOR + " ");
+					send(CS_ENTERLOBBY + SEPARATOR + " ");
 				} else if (daten.equals("Failed")) {
 					System.out.println("Fehler in der Anmeldung/Registrierung");
 				}
 			}
-			case PROTOKOLL.SC_LOBBYLIST -> {
+			case SC_LOBBYLIST -> {
 				lobby.setLobbyList(daten);
 			}
-			case PROTOKOLL.SC_LOBBYSTATUS -> {
+			case SC_LOBBYSTATUS -> {
 				if (daten.equals("START")) {
 					game.startGame();
 				} else {
 					lobby.refreshCounter(daten);
 				}
 			}
-			case PROTOKOLL.SC_OWNRESULT -> {
+			case SC_OWNRESULT -> {
 				ergebnis.show(daten);
 			}
-			case PROTOKOLL.SC_ROUNDRESULT -> {
+			case SC_ROUNDRESULT -> {
 				ergebnis.updateScoreList(daten);
 			}
 		}

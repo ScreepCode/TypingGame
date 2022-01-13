@@ -1,9 +1,9 @@
 package game.client;
 
-import game.PROTOKOLL;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import static game.PROTOKOLL.*;
 
 public class ClientLobby {
 
@@ -24,11 +24,11 @@ public class ClientLobby {
     public void setReady(){
         if(readyStatus){
             readyStatus = false;
-            clientHead.send(PROTOKOLL.CS_SETREADY + PROTOKOLL.SEPARATOR + "0");
+            clientHead.send(CS_SETREADY + SEPARATOR + "0");
         }
         else{
             readyStatus = true;
-            clientHead.send(PROTOKOLL.CS_SETREADY + PROTOKOLL.SEPARATOR + "1");
+            clientHead.send(CS_SETREADY + SEPARATOR + "1");
         }
     }
 

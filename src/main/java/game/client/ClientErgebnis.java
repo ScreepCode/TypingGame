@@ -1,6 +1,6 @@
 package game.client;
 
-import game.PROTOKOLL;
+import static game.PROTOKOLL.*;
 
 public class ClientErgebnis {
 
@@ -34,7 +34,7 @@ public class ClientErgebnis {
     }
 
     public void uploadRecord(){
-        clientHead.send(PROTOKOLL.CS_SAVEHIGHSCORE + PROTOKOLL.SEPARATOR + "1");
+        clientHead.send(CS_SAVEHIGHSCORE + SEPARATOR + "1");
     }
 
     public void updateScoreList(String data){

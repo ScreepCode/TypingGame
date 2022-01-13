@@ -1,7 +1,8 @@
 package game.server;
 
 import Listenklassen.List;
-import game.PROTOKOLL;
+
+import static game.PROTOKOLL.*;
 
 public class ServerErgebnis {
 
@@ -12,14 +13,14 @@ public class ServerErgebnis {
     }
 
     public void nachrichtenVerwaltung(String pClientIP, int pClientPort, String pMessage) {
-        int posSep1 = pMessage.indexOf(PROTOKOLL.SEPARATOR);
+        int posSep1 = pMessage.indexOf(SEPARATOR);
         String prefix = pMessage.substring(0, posSep1);
         String daten =  pMessage.substring(posSep1+1);
 
         Spieler tmpSpieler = serverHead.spielerSuchen(pClientIP, pClientPort);
 
         switch (prefix) {
-            case PROTOKOLL.CS_ENDEDGAME -> {
+            case CS_ENDEDGAME -> {
                 String[] dataArr = daten.split(":");
 
                 //Ergebnisse:
@@ -29,7 +30,7 @@ public class ServerErgebnis {
                 String resultRechnung = "" + (int) resultKeys + "*(1-(" + (int) resultErrors + "/" + (int) resultKeys + "))";
                 double resultPunktzahl = (resultKeys * (1 - (resultErrors / resultKeys)));
 
-                String message = PROTOKOLL.SC_OWNRESULT + PROTOKOLL.SEPARATOR + (int) resultKeys + ":" + (int) resultAPM + ":" + (int) resultErrors + ":" + resultRechnung + ":" + (int) resultPunktzahl + ":" + (tmpSpieler.getHighscore() < resultPunktzahl);
+                String message = SC_OWNRESULT + SEPARATOR + (int) resultKeys + ":" + (int) resultAPM + ":" + (int) resultErrors + ":" + resultRechnung + ":" + (int) resultPunktzahl + ":" + (tmpSpieler.getHighscore() < resultPunktzahl);
                 serverHead.send(pClientIP, pClientPort, message);
 
                 tmpSpieler.setHighscore(resultPunktzahl);
@@ -37,7 +38,7 @@ public class ServerErgebnis {
 
                 updateScoreList();
             }
-            case PROTOKOLL.CS_SAVEHIGHSCORE -> {
+            case CS_SAVEHIGHSCORE -> {
                 serverHead.connector.saveHighscore(tmpSpieler.getNickName(), (int) tmpSpieler.getHighscore());
             }
         }
@@ -47,7 +48,7 @@ public class ServerErgebnis {
         List<Spieler> playedPlayer = serverHead.spieler;
         SortLists.sortPlayerByScore(serverHead.spieler, "score");
 
-        String message = PROTOKOLL.SC_ROUNDRESULT + PROTOKOLL.SEPARATOR;
+        String message = SC_ROUNDRESULT + SEPARATOR;
         for(playedPlayer.toFirst(); playedPlayer.hasAccess(); playedPlayer.next()){
             message += playedPlayer.getContent().getNickName() + ":" + (int)playedPlayer.getContent().getScore() + ";";
         }

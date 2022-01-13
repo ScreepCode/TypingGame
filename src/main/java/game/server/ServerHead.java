@@ -1,8 +1,9 @@
 package game.server;
 
-import game.PROTOKOLL;
 import Listenklassen.List;
-import Netzklassen.*;
+import Netzklassen.Server;
+
+import static game.PROTOKOLL.*;
 
 public class ServerHead extends Server{
 
@@ -27,36 +28,36 @@ public class ServerHead extends Server{
 	public void processNewConnection(String pClientIP, int pClientPort) {
 		spieler.append(new Spieler(pClientIP, pClientPort));
 		
-		String message = PROTOKOLL.SC_NOTIFICATION + PROTOKOLL.SEPARATOR;
+		String message = SC_NOTIFICATION + SEPARATOR;
 		this.send(pClientIP, pClientPort, message + "Willkommen bei meinem Spiel. Bitte wähle deinen Account aus");
 	}
 
 	@Override
 	public void processMessage(String pClientIP, int pClientPort, String pMessage) {
 		System.out.println(pMessage);
-		int posSep1 = pMessage.indexOf(PROTOKOLL.SEPARATOR);
+		int posSep1 = pMessage.indexOf(SEPARATOR);
 		String prefix = pMessage.substring(0, posSep1);
 
 		switch (prefix) {
-			case PROTOKOLL.CS_REQUESTHIGHSCORELIST -> {
+			case CS_REQUESTHIGHSCORELIST -> {
 				this.send(pClientIP, pClientPort, login.getHighscores());
 			}
-			case PROTOKOLL.CS_ACC_LOGIN -> {
+			case CS_ACC_LOGIN -> {
 				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 			}
-			case PROTOKOLL.CS_ACC_CREATION -> {
+			case CS_ACC_CREATION -> {
 				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 			}
-			case PROTOKOLL.CS_ENTERLOBBY -> {
+			case CS_ENTERLOBBY -> {
 				lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 			}
-			case PROTOKOLL.CS_SETREADY -> {
+			case CS_SETREADY -> {
 				lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 			}
-			case PROTOKOLL.CS_ENDEDGAME -> {
+			case CS_ENDEDGAME -> {
 				ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 			}
-			case PROTOKOLL.CS_SAVEHIGHSCORE -> {
+			case CS_SAVEHIGHSCORE -> {
 				ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 			}
 		}

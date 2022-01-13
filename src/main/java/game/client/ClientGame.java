@@ -1,13 +1,15 @@
 package game.client;
 
 import Listenklassen.List;
-import game.PROTOKOLL;
 
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static game.PROTOKOLL.CS_ENDEDGAME;
+import static game.PROTOKOLL.SEPARATOR;
 
 public class ClientGame{
 
@@ -67,7 +69,7 @@ public class ClientGame{
         timerZeit.cancel();
         threadAPM.interrupt();
 
-        clientHead.send(PROTOKOLL.CS_ENDEDGAME + PROTOKOLL.SEPARATOR + counter + ":" + countFehler());
+        clientHead.send(CS_ENDEDGAME + SEPARATOR + counter + ":" + countFehler());
     }
 
     public void typeChar(char c){

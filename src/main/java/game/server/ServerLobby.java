@@ -1,7 +1,8 @@
 package game.server;
 
 import Listenklassen.List;
-import game.PROTOKOLL;
+
+import static game.PROTOKOLL.*;
 
 public class ServerLobby {
 
@@ -13,18 +14,18 @@ public class ServerLobby {
 
 
     public void nachrichtenVerwaltung(String pClientIP, int pClientPort, String pMessage){
-        int posSep1 = pMessage.indexOf(PROTOKOLL.SEPARATOR);
+        int posSep1 = pMessage.indexOf(SEPARATOR);
 		String prefix = pMessage.substring(0, posSep1);
         String daten =  pMessage.substring(posSep1+1);
 
         Spieler tmpSpieler = serverHead.spielerSuchen(pClientIP, pClientPort);
 
         switch (prefix) {
-            case PROTOKOLL.CS_ENTERLOBBY -> {
+            case CS_ENTERLOBBY -> {
                 addPlayerToLobby(tmpSpieler);
                 checkIfLobbyReady();
             }
-            case PROTOKOLL.CS_SETREADY -> {
+            case CS_SETREADY -> {
                 if (daten.equals("1")) {
                     tmpSpieler.setReadyStatus(true);
                 } else if (daten.equals("0")) {
@@ -36,7 +37,7 @@ public class ServerLobby {
     }
 
     public void sendAllLobbyMembers(){
-        String message = PROTOKOLL.SC_LOBBYLIST + PROTOKOLL.SEPARATOR;
+        String message = SC_LOBBYLIST + SEPARATOR;
         List<Spieler> spielerList = serverHead.spieler;
         for(spielerList.toFirst(); spielerList.hasAccess(); spielerList.next()){
             String name = spielerList.getContent().getNickName();
@@ -59,10 +60,10 @@ public class ServerLobby {
         }
 
         if(readyMember == lobbyMember){
-            serverHead.sendToAll(PROTOKOLL.SC_LOBBYSTATUS + PROTOKOLL.SEPARATOR + "START");
+            serverHead.sendToAll(SC_LOBBYSTATUS + SEPARATOR + "START");
         }
         else{
-            serverHead.sendToAll(PROTOKOLL.SC_LOBBYSTATUS + PROTOKOLL.SEPARATOR + readyMember + "/" + lobbyMember);
+            serverHead.sendToAll(SC_LOBBYSTATUS + SEPARATOR + readyMember + "/" + lobbyMember);
         }
 
         sendAllLobbyMembers();

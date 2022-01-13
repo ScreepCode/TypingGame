@@ -1,8 +1,8 @@
 package game.server;
 
-import game.PROTOKOLL;
-
 import java.util.Random;
+
+import static game.PROTOKOLL.*;
 
 public class ServerLogin {
 
@@ -13,7 +13,7 @@ public class ServerLogin {
     }
 
     public void nachrichtenVerwaltung(String pClientIP, int pClientPort, String pMessage){
-        int posSep1 = pMessage.indexOf(PROTOKOLL.SEPARATOR);
+        int posSep1 = pMessage.indexOf(SEPARATOR);
 		String prefix = pMessage.substring(0, posSep1);
         String daten =  pMessage.substring(posSep1+1);
 
@@ -23,7 +23,7 @@ public class ServerLogin {
         Spieler tmpSpieler = serverHead.spielerSuchen(pClientIP, pClientPort);
 
         switch (prefix) {
-            case PROTOKOLL.CS_ACC_CREATION -> {
+            case CS_ACC_CREATION -> {
                 int posSep2 = daten.indexOf(':');
                 String username = daten.substring(0, posSep2);
                 String passwordHash = daten.substring(posSep2 + 1);
@@ -31,27 +31,27 @@ public class ServerLogin {
                 try {
                     Boolean exists = serverHead.connector.checkIfAccountnameExists(username);
                     if (exists) {
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed" + ": Nutzername existiert bereits";
+                        String antwort = SC_LOGINSTATUS + SEPARATOR + "Failed" + ": Nutzername existiert bereits";
                         serverHead.send(pClientIP, pClientPort, antwort);
                     } else {
                         serverHead.connector.createAccount(username, passwordHash);
                         tmpSpieler.setNickName(username);
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success";
+                        String antwort = SC_LOGINSTATUS + SEPARATOR + "Success";
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed" + ": Unbekannter Fehler aufgetreten";
+                    String antwort = SC_LOGINSTATUS + SEPARATOR + "Failed" + ": Unbekannter Fehler aufgetreten";
                     serverHead.send(pClientIP, pClientPort, antwort);
                 }
 
             }
-            case PROTOKOLL.CS_ACC_LOGIN -> {
+            case CS_ACC_LOGIN -> {
                 String[] dataArr = daten.split(":");
                 if (dataArr.length == 1) {
                     if (dataArr[0].equals("Guest")) {
                         tmpSpieler.setNickName("Guest" + new Random().nextInt(100));
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success:" + tmpSpieler.getNickName();
+                        String antwort = SC_LOGINSTATUS + SEPARATOR + "Success:" + tmpSpieler.getNickName();
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                 } else {
@@ -61,10 +61,10 @@ public class ServerLogin {
 
                     if (serverHead.connector.passwordCheck(username, passwordHash)) {
                         tmpSpieler.setNickName(username);
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Success:" + tmpSpieler.getNickName();
+                        String antwort = SC_LOGINSTATUS + SEPARATOR + "Success:" + tmpSpieler.getNickName();
                         serverHead.send(pClientIP, pClientPort, antwort);
                     } else {
-                        String antwort = PROTOKOLL.SC_LOGINSTATUS + PROTOKOLL.SEPARATOR + "Failed";
+                        String antwort = SC_LOGINSTATUS + SEPARATOR + "Failed";
                         serverHead.send(pClientIP, pClientPort, antwort);
                     }
                 }
@@ -74,7 +74,7 @@ public class ServerLogin {
     }
 
     public String getHighscores(){
-        String message = PROTOKOLL.SC_HIGHSCORELIST + PROTOKOLL.SEPARATOR;
+        String message = SC_HIGHSCORELIST + SEPARATOR;
         String[][] highscorelist = serverHead.connector.getHighscores();
 
         for(String [] row : highscorelist){

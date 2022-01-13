@@ -1,9 +1,9 @@
 package game.client;
 
-import game.PROTOKOLL;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+
+import static game.PROTOKOLL.*;
 
 public class ClientLogin {
 
@@ -21,7 +21,7 @@ public class ClientLogin {
             messageDigest.update(password.getBytes());
             String passwordHash = new String(messageDigest.digest(), StandardCharsets.UTF_8);
 		
-            String message = PROTOKOLL.CS_ACC_LOGIN + PROTOKOLL.SEPARATOR + name + ":" + passwordHash;
+            String message = CS_ACC_LOGIN + SEPARATOR + name + ":" + passwordHash;
             clientHead.send(message);
         }
         catch (Exception e) {
@@ -35,7 +35,7 @@ public class ClientLogin {
             messageDigest.update(password.getBytes());
             String passwordHash = new String(messageDigest.digest(), StandardCharsets.UTF_8);
             
-            String message = PROTOKOLL.CS_ACC_CREATION + PROTOKOLL.SEPARATOR + name + ":" + passwordHash;
+            String message = CS_ACC_CREATION + SEPARATOR + name + ":" + passwordHash;
             clientHead.send(message);
         }
         catch (Exception e) {
@@ -44,7 +44,7 @@ public class ClientLogin {
 	}
 	
 	public void accLoginAsGuest(){
-		String message = PROTOKOLL.CS_ACC_LOGIN + PROTOKOLL.SEPARATOR + "Guest";
+		String message = CS_ACC_LOGIN + SEPARATOR + "Guest";
 		clientHead.send(message);
 	}
 
