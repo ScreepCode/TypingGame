@@ -38,9 +38,7 @@ public class ServerErgebnis {
 
                 updateScoreList();
             }
-            case CS_SAVEHIGHSCORE -> {
-                serverHead.connector.saveHighscore(tmpSpieler.getNickName(), (int) tmpSpieler.getHighscore());
-            }
+            case CS_SAVEHIGHSCORE -> serverHead.connector.saveHighscore(tmpSpieler.getNickName(), (int) tmpSpieler.getHighscore());
         }
     }
 

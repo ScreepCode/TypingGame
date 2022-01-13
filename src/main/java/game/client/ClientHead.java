@@ -41,9 +41,7 @@ public class ClientHead extends Client{
 
 		switch (prefix) {
 
-			case SC_HIGHSCORELIST -> {
-				login.updateHighscoreList(daten);
-			}
+			case SC_HIGHSCORELIST -> login.updateHighscoreList(daten);
 			case SC_LOGINSTATUS -> {
 				if (daten.startsWith("Success")) {
 					gui.setTitle(gui.getTitle() + " --> " + daten.split(":")[1]);
@@ -53,9 +51,7 @@ public class ClientHead extends Client{
 					System.out.println("Fehler in der Anmeldung/Registrierung");
 				}
 			}
-			case SC_LOBBYLIST -> {
-				lobby.setLobbyList(daten);
-			}
+			case SC_LOBBYLIST -> lobby.setLobbyList(daten);
 			case SC_LOBBYSTATUS -> {
 				if (daten.equals("START")) {
 					game.startGame();
@@ -63,12 +59,8 @@ public class ClientHead extends Client{
 					lobby.refreshCounter(daten);
 				}
 			}
-			case SC_OWNRESULT -> {
-				ergebnis.show(daten);
-			}
-			case SC_ROUNDRESULT -> {
-				ergebnis.updateScoreList(daten);
-			}
+			case SC_OWNRESULT -> ergebnis.show(daten);
+			case SC_ROUNDRESULT -> ergebnis.updateScoreList(daten);
 		}
 	}
 }

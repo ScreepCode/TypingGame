@@ -39,27 +39,13 @@ public class ServerHead extends Server{
 		String prefix = pMessage.substring(0, posSep1);
 
 		switch (prefix) {
-			case CS_REQUESTHIGHSCORELIST -> {
-				this.send(pClientIP, pClientPort, login.getHighscores());
-			}
-			case CS_ACC_LOGIN -> {
-				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-			}
-			case CS_ACC_CREATION -> {
-				login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-			}
-			case CS_ENTERLOBBY -> {
-				lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-			}
-			case CS_SETREADY -> {
-				lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-			}
-			case CS_ENDEDGAME -> {
-				ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-			}
-			case CS_SAVEHIGHSCORE -> {
-				ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
-			}
+			case CS_REQUESTHIGHSCORELIST -> this.send(pClientIP, pClientPort, login.getHighscores());
+			case CS_ACC_LOGIN -> login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
+			case CS_ACC_CREATION -> login.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
+			case CS_ENTERLOBBY -> lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
+			case CS_SETREADY -> lobby.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
+			case CS_ENDEDGAME -> ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
+			case CS_SAVEHIGHSCORE -> ergebnis.nachrichtenVerwaltung(pClientIP, pClientPort, pMessage);
 		}
 	}
 
